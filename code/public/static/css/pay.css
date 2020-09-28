@@ -1,0 +1,144 @@
+.header-font {
+    font-weight: bold;
+}
+
+.header-container {
+    margin-top: 20px;
+}
+
+.process-pay li {
+    float: left;
+    height: 40px;
+    position: relative;
+    list-style: none;
+    margin-right: -10px;
+}
+
+.process-pay .less {
+    border-style: dashed dashed dashed solid;
+    border-color: transparent transparent transparent #33cde5;
+    border-width: 20px 0 20px 15px;
+    top: 0;
+}
+
+/*dashed 设置透明*/
+.process-pay .less1 {
+    border-style: dashed dashed dashed solid;
+    border-color: transparent transparent transparent #fff;
+    border-width: 20px 0 20px 15px;
+    top: 0;
+}
+
+.process-pay .right {
+    right: 0;
+}
+
+.process-pay .left {
+    left: 0;
+}
+
+samp {
+    display: block;
+    position: absolute;
+    z-index: 2;
+}
+
+span {
+    display: block;
+    position: relative;
+    float: left;
+    z-index: 3;
+}
+
+.block {
+    width: 96%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #33cde5;
+    vertical-align: middle;
+    color: #fff;
+    float: left;
+    z-index: 1;
+}
+
+.process-pay .block-gray {
+    background-color: #EBECEC;
+    color: #A4A6A5;
+}
+
+.process-container {
+    margin-top: 10px;
+}
+
+.order-info {
+    margin-top: 30px;
+}
+
+.order-info-bg {
+    background-color: #F7F7F7;
+}
+
+.order-info p {
+    color: #888888;
+    padding-bottom: 5px;
+}
+
+.order-info .pay-price {
+    color: #F45D0B;
+    font-weight: bold;
+}
+
+.pay-way ul li {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-bottom: 16px;
+}
+
+.pay-way div {
+    padding-top: 2px;
+    margin-bottom: 4px;
+}
+.pay-way{
+    margin-top: 20px;
+}
+.alert-softly{
+    text-indent: 30px;
+}
+.alert-softly a{
+    color: #0000FF;
+}
+.submit-btn{
+    width:24%;
+    margin:0 auto;
+}
+.submit-btn button{
+    width: 100%;
+}
+.layui-form-checkbox[lay-skin=primary] span{
+    padding-left: 0;
+    padding-right: 0;
+    line-height: 18px;
+    background: 0 0;
+    color: #666;
+}
+.submit-btn span a{
+    color: #2898FF;
+}
+.receipt-alert{
+    width:300px
+}
+.softly-div {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.softly-div p {
+    color: #888888;
+    padding-bottom: 5px;
+}
+.submit-btn .layui-form{
+    padding-top:14px;
+    margin-bottom: 10px;
+}

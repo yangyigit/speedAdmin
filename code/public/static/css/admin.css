@@ -1,0 +1,15 @@
+
+.layui-layer-error .layui-layer-title {
+    background: #FF5722;
+    color: #fff;
+    border: none
+}
+
+.layui-layer-error .layui-layer-btn a {
+    background: #FF5722;
+    border-color: #FF5722
+}
+
+.layui-layer-error .layui-layer-btn .layui-layer-btn1 {
+    background: #92B8B1
+}
