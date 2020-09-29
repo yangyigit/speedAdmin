@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'think\\' => array($vendorDir . '/sy-records/think-template/src'),
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
@@ -23,6 +24,9 @@ return array(
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Symfony\\Component\\String\\' => array($vendorDir . '/symfony/string'),
     'Symfony\\Component\\Stopwatch\\' => array($vendorDir . '/symfony/stopwatch'),
+    'Symfony\\Component\\Serializer\\' => array($vendorDir . '/symfony/serializer'),
+    'Symfony\\Component\\PropertyInfo\\' => array($vendorDir . '/symfony/property-info'),
+    'Symfony\\Component\\PropertyAccess\\' => array($vendorDir . '/symfony/property-access'),
     'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
     'Symfony\\Component\\OptionsResolver\\' => array($vendorDir . '/symfony/options-resolver'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
@@ -45,9 +49,10 @@ return array(
     'Laminas\\ZendFrameworkBridge\\' => array($vendorDir . '/laminas/laminas-zendframework-bridge/src'),
     'Laminas\\Stdlib\\' => array($vendorDir . '/laminas/laminas-stdlib/src'),
     'Laminas\\Mime\\' => array($vendorDir . '/laminas/laminas-mime/src'),
-    'Installer\\' => array($baseDir . '/installer'),
+    'Hyperf\\View\\' => array($vendorDir . '/hyperf/view/src'),
     'Hyperf\\Utils\\' => array($vendorDir . '/hyperf/utils/src'),
     'Hyperf\\Testing\\' => array($vendorDir . '/hyperf/testing/src'),
+    'Hyperf\\Task\\' => array($vendorDir . '/hyperf/task/src'),
     'Hyperf\\Server\\' => array($vendorDir . '/hyperf/server/src'),
     'Hyperf\\Redis\\' => array($vendorDir . '/hyperf/redis/src'),
     'Hyperf\\Process\\' => array($vendorDir . '/hyperf/process/src'),

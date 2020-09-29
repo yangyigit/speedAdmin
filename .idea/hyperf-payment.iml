@@ -40,8 +40,10 @@
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/process" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/redis" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/server" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/task" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/testing" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/view" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/jetbrains/phpstorm-stubs" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/laminas/laminas-mime" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/laminas/laminas-stdlib" />
@@ -90,6 +92,7 @@
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/sebastian/resource-operations" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/sebastian/version" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/swoole/ide-helper" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/sy-records/think-template" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/deprecation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/event-dispatcher" />
@@ -107,6 +110,9 @@
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-php73" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-php80" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/property-access" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/property-info" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/serializer" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/service-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/stopwatch" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/string" />

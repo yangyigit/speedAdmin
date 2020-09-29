@@ -110,6 +110,12 @@
       <path value="$PROJECT_DIR$/code/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/code/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/code/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/code/vendor/hyperf/view" />
+      <path value="$PROJECT_DIR$/code/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/code/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/code/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/code/vendor/hyperf/task" />
+      <path value="$PROJECT_DIR$/code/vendor/sy-records/think-template" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

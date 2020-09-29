@@ -2355,6 +2355,76 @@
         ]
     },
     {
+        "name": "hyperf/task",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hyperf/task.git",
+            "reference": "b3c5745d485d368658158c2041c4da6694b315c0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hyperf/task/zipball/b3c5745d485d368658158c2041c4da6694b315c0",
+            "reference": "b3c5745d485d368658158c2041c4da6694b315c0",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "hyperf/contract": "~2.0.0",
+            "hyperf/framework": "~2.0.0",
+            "hyperf/utils": "~2.0.0",
+            "php": ">=7.2",
+            "psr/container": "^1.0",
+            "psr/event-dispatcher": "^1.0",
+            "psr/log": "^1.0",
+            "symfony/property-access": "^5.0",
+            "symfony/serializer": "^5.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.9",
+            "malukenho/docheader": "^0.1.6",
+            "mockery/mockery": "^1.0",
+            "phpunit/phpunit": "^7.0"
+        },
+        "suggest": {
+            "hyperf/di": "Required to use annotation."
+        },
+        "time": "2020-09-21T03:59:18+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            },
+            "hyperf": {
+                "config": "Hyperf\\Task\\ConfigProvider"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Hyperf\\Task\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "A task library for Hyperf.",
+        "homepage": "https://hyperf.io",
+        "keywords": [
+            "hyperf",
+            "php",
+            "swoole",
+            "task"
+        ]
+    },
+    {
         "name": "hyperf/testing",
         "version": "v2.0.3",
         "version_normalized": "2.0.3.0",
@@ -2488,6 +2558,76 @@
             "php",
             "swoole",
             "utils"
+        ]
+    },
+    {
+        "name": "hyperf/view",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hyperf/view.git",
+            "reference": "77aedc126117a85c8db688873e7db6241af60d75"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hyperf/view/zipball/77aedc126117a85c8db688873e7db6241af60d75",
+            "reference": "77aedc126117a85c8db688873e7db6241af60d75",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "hyperf/contract": "~2.0.0",
+            "hyperf/utils": "~2.0.0",
+            "php": ">=7.2",
+            "psr/container": "^1.0",
+            "psr/log": "^1.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.9",
+            "malukenho/docheader": "^0.1.6",
+            "mockery/mockery": "^1.0",
+            "phpunit/phpunit": "^7.0"
+        },
+        "suggest": {
+            "duncan3dc/blade": "Required to use blade as a view render engine.",
+            "hyperf/task": "Required to use task as a view render mode.",
+            "league/plates": "Required to use plates as a view render engine.",
+            "smarty/smarty": "Required to use smarty as a view render engine.",
+            "twig/twig": "Required to use twig as a view render engine."
+        },
+        "time": "2020-09-21T03:59:18+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            },
+            "hyperf": {
+                "config": "Hyperf\\View\\ConfigProvider"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Hyperf\\View\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "A view library for Hyperf.",
+        "homepage": "https://hyperf.io",
+        "keywords": [
+            "hyperf",
+            "php",
+            "swoole",
+            "view"
         ]
     },
     {
@@ -5374,6 +5514,56 @@
         "description": "IDE help files for Swoole."
     },
     {
+        "name": "sy-records/think-template",
+        "version": "v2.0.9",
+        "version_normalized": "2.0.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sy-records/think-template.git",
+            "reference": "2e6992049849d875342101b960a50af4a7ffb6ae"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sy-records/think-template/zipball/2e6992049849d875342101b960a50af4a7ffb6ae",
+            "reference": "2e6992049849d875342101b960a50af4a7ffb6ae",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "php": ">=7.1.0",
+            "psr/simple-cache": "^1.0"
+        },
+        "time": "2019-11-14T11:42:49+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "think\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "liu21st",
+                "email": "liu21st@gmail.com"
+            }
+        ],
+        "description": "use think template engine for hyperf.",
+        "keywords": [
+            "hyperf",
+            "php",
+            "think-template"
+        ]
+    },
+    {
         "name": "symfony/console",
         "version": "v5.1.6",
         "version_normalized": "5.1.6.0",
@@ -6553,6 +6743,258 @@
             }
         ],
         "description": "Symfony Process Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/property-access",
+        "version": "v5.1.6",
+        "version_normalized": "5.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/property-access.git",
+            "reference": "4c43f7ff784e1e3ee1c96e15f76b342af6617b39"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/property-access/zipball/4c43f7ff784e1e3ee1c96e15f76b342af6617b39",
+            "reference": "4c43f7ff784e1e3ee1c96e15f76b342af6617b39",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "php": ">=7.2.5",
+            "symfony/polyfill-php80": "^1.15",
+            "symfony/property-info": "^5.1.1"
+        },
+        "require-dev": {
+            "symfony/cache": "^4.4|^5.0"
+        },
+        "suggest": {
+            "psr/cache-implementation": "To cache access methods."
+        },
+        "time": "2020-09-02T16:23:27+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\PropertyAccess\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony PropertyAccess Component",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "access",
+            "array",
+            "extraction",
+            "index",
+            "injection",
+            "object",
+            "property",
+            "property path",
+            "reflection"
+        ]
+    },
+    {
+        "name": "symfony/property-info",
+        "version": "v5.1.6",
+        "version_normalized": "5.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/property-info.git",
+            "reference": "22518930091e0bdb249694efc509e3697f7e325e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/property-info/zipball/22518930091e0bdb249694efc509e3697f7e325e",
+            "reference": "22518930091e0bdb249694efc509e3697f7e325e",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "php": ">=7.2.5",
+            "symfony/polyfill-php80": "^1.15",
+            "symfony/string": "^5.1"
+        },
+        "conflict": {
+            "phpdocumentor/reflection-docblock": "<3.2.2",
+            "phpdocumentor/type-resolver": "<0.3.0",
+            "symfony/dependency-injection": "<4.4"
+        },
+        "require-dev": {
+            "doctrine/annotations": "~1.7",
+            "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
+            "symfony/cache": "^4.4|^5.0",
+            "symfony/dependency-injection": "^4.4|^5.0",
+            "symfony/serializer": "^4.4|^5.0"
+        },
+        "suggest": {
+            "phpdocumentor/reflection-docblock": "To use the PHPDoc",
+            "psr/cache-implementation": "To cache results",
+            "symfony/doctrine-bridge": "To use Doctrine metadata",
+            "symfony/serializer": "To use Serializer metadata"
+        },
+        "time": "2020-09-07T05:10:28+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\PropertyInfo\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kévin Dunglas",
+                "email": "dunglas@gmail.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Property Info Component",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "doctrine",
+            "phpdoc",
+            "property",
+            "symfony",
+            "type",
+            "validator"
+        ]
+    },
+    {
+        "name": "symfony/serializer",
+        "version": "v5.1.6",
+        "version_normalized": "5.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/serializer.git",
+            "reference": "acffef33552965108a883a0bdc19a0264950779e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/serializer/zipball/acffef33552965108a883a0bdc19a0264950779e",
+            "reference": "acffef33552965108a883a0bdc19a0264950779e",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "php": ">=7.2.5",
+            "symfony/polyfill-ctype": "~1.8",
+            "symfony/polyfill-php80": "^1.15"
+        },
+        "conflict": {
+            "phpdocumentor/type-resolver": "<0.2.1",
+            "symfony/dependency-injection": "<4.4",
+            "symfony/property-access": "<4.4",
+            "symfony/property-info": "<4.4",
+            "symfony/yaml": "<4.4"
+        },
+        "require-dev": {
+            "doctrine/annotations": "~1.0",
+            "doctrine/cache": "~1.0",
+            "phpdocumentor/reflection-docblock": "^3.2|^4.0",
+            "symfony/cache": "^4.4|^5.0",
+            "symfony/config": "^4.4|^5.0",
+            "symfony/dependency-injection": "^4.4|^5.0",
+            "symfony/error-handler": "^4.4|^5.0",
+            "symfony/http-foundation": "^4.4|^5.0",
+            "symfony/mime": "^4.4|^5.0",
+            "symfony/property-access": "^4.4|^5.0",
+            "symfony/property-info": "^4.4|^5.0",
+            "symfony/validator": "^4.4|^5.0",
+            "symfony/yaml": "^4.4|^5.0"
+        },
+        "suggest": {
+            "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
+            "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
+            "psr/cache-implementation": "For using the metadata cache.",
+            "symfony/config": "For using the XML mapping loader.",
+            "symfony/mime": "For using a MIME type guesser within the DataUriNormalizer.",
+            "symfony/property-access": "For using the ObjectNormalizer.",
+            "symfony/property-info": "To deserialize relations.",
+            "symfony/yaml": "For using the default YAML mapping loader."
+        },
+        "time": "2020-09-02T16:23:27+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Serializer\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Serializer Component",
         "homepage": "https://symfony.com"
     },
     {
