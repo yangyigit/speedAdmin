@@ -1,17 +1,17 @@
 [
     {
         "name": "composer/semver",
-        "version": "1.7.0",
-        "version_normalized": "1.7.0.0",
+        "version": "1.7.1",
+        "version_normalized": "1.7.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/semver.git",
-            "reference": "114f819054a2ea7db03287f5efb757e2af6e4079"
+            "reference": "38276325bd896f90dfcfe30029aa5db40df387a7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/semver/zipball/114f819054a2ea7db03287f5efb757e2af6e4079",
-            "reference": "114f819054a2ea7db03287f5efb757e2af6e4079",
+            "url": "https://api.github.com/repos/composer/semver/zipball/38276325bd896f90dfcfe30029aa5db40df387a7",
+            "reference": "38276325bd896f90dfcfe30029aa5db40df387a7",
             "shasum": "",
             "mirrors": [
                 {
@@ -26,7 +26,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.5 || ^5.0.5"
         },
-        "time": "2020-09-09T09:34:06+00:00",
+        "time": "2020-09-27T13:13:07+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1051,17 +1051,17 @@
     },
     {
         "name": "hyperf/contract",
-        "version": "v2.0.9",
-        "version_normalized": "2.0.9.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/contract.git",
-            "reference": "910c11bc3ca76c1632eacab0154b341d523a39de"
+            "reference": "02eb7c2affbc9ef020b02801b4b21c69c7e4fd5b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/contract/zipball/910c11bc3ca76c1632eacab0154b341d523a39de",
-            "reference": "910c11bc3ca76c1632eacab0154b341d523a39de",
+            "url": "https://api.github.com/repos/hyperf/contract/zipball/02eb7c2affbc9ef020b02801b4b21c69c7e4fd5b",
+            "reference": "02eb7c2affbc9ef020b02801b4b21c69c7e4fd5b",
             "shasum": "",
             "mirrors": [
                 {
@@ -1079,7 +1079,7 @@
             "mockery/mockery": "^1.0",
             "phpunit/phpunit": "^7.0.0"
         },
-        "time": "2020-08-24T08:37:21+00:00",
+        "time": "2020-09-27T08:25:56+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1107,17 +1107,17 @@
     },
     {
         "name": "hyperf/database",
-        "version": "v2.0.12",
-        "version_normalized": "2.0.12.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/database.git",
-            "reference": "423b9131a211f4ae2d3bf08cd6af389ffbbe04cd"
+            "reference": "c07e4e691375ed8a3821542c332f8c56310c9663"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/database/zipball/423b9131a211f4ae2d3bf08cd6af389ffbbe04cd",
-            "reference": "423b9131a211f4ae2d3bf08cd6af389ffbbe04cd",
+            "url": "https://api.github.com/repos/hyperf/database/zipball/c07e4e691375ed8a3821542c332f8c56310c9663",
+            "reference": "c07e4e691375ed8a3821542c332f8c56310c9663",
             "shasum": "",
             "mirrors": [
                 {
@@ -1144,7 +1144,7 @@
             "doctrine/dbal": "Required to rename columns (^2.6).",
             "roave/better-reflection": "Required to use ModelCommand (^4.0)."
         },
-        "time": "2020-09-18T01:48:03+00:00",
+        "time": "2020-09-23T02:31:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1236,17 +1236,17 @@
     },
     {
         "name": "hyperf/devtool",
-        "version": "v2.0.10",
-        "version_normalized": "2.0.10.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/devtool.git",
-            "reference": "202a4288cde02e5f263c5b7ee0cc9a5825c74b1b"
+            "reference": "d8d5a2fd40108caa39dcadddf84c8955055ebfac"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/devtool/zipball/202a4288cde02e5f263c5b7ee0cc9a5825c74b1b",
-            "reference": "202a4288cde02e5f263c5b7ee0cc9a5825c74b1b",
+            "url": "https://api.github.com/repos/hyperf/devtool/zipball/d8d5a2fd40108caa39dcadddf84c8955055ebfac",
+            "reference": "d8d5a2fd40108caa39dcadddf84c8955055ebfac",
             "shasum": "",
             "mirrors": [
                 {
@@ -1268,7 +1268,7 @@
             "mockery/mockery": "^1.0",
             "phpunit/phpunit": "^7.0.0"
         },
-        "time": "2020-08-31T06:51:22+00:00",
+        "time": "2020-09-23T02:31:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1299,17 +1299,17 @@
     },
     {
         "name": "hyperf/di",
-        "version": "v2.0.10",
-        "version_normalized": "2.0.10.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/di.git",
-            "reference": "9c1a8d8f86cba42f5902410f3409ad1f6fbfefde"
+            "reference": "ab75a0bd9d9a54af39f0f588a6d547808a99591f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/di/zipball/9c1a8d8f86cba42f5902410f3409ad1f6fbfefde",
-            "reference": "9c1a8d8f86cba42f5902410f3409ad1f6fbfefde",
+            "url": "https://api.github.com/repos/hyperf/di/zipball/ab75a0bd9d9a54af39f0f588a6d547808a99591f",
+            "reference": "ab75a0bd9d9a54af39f0f588a6d547808a99591f",
             "shasum": "",
             "mirrors": [
                 {
@@ -1336,7 +1336,7 @@
         "suggest": {
             "hyperf/config": "Require this component for annotation scan progress to retrieve the scan path."
         },
-        "time": "2020-09-03T10:22:50+00:00",
+        "time": "2020-09-28T02:47:04+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1501,17 +1501,17 @@
     },
     {
         "name": "hyperf/exception-handler",
-        "version": "v2.0.10",
-        "version_normalized": "2.0.10.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/exception-handler.git",
-            "reference": "5b23378bf5186873a207be3144f9912b7bafb9c2"
+            "reference": "ceb5de4a710757c087815997fd4132beb90c19dc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/exception-handler/zipball/5b23378bf5186873a207be3144f9912b7bafb9c2",
-            "reference": "5b23378bf5186873a207be3144f9912b7bafb9c2",
+            "url": "https://api.github.com/repos/hyperf/exception-handler/zipball/ceb5de4a710757c087815997fd4132beb90c19dc",
+            "reference": "ceb5de4a710757c087815997fd4132beb90c19dc",
             "shasum": "",
             "mirrors": [
                 {
@@ -1534,7 +1534,7 @@
             "mockery/mockery": "^1.0",
             "phpunit/phpunit": "^7.0.0"
         },
-        "time": "2020-08-31T06:51:22+00:00",
+        "time": "2020-09-24T03:36:22+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1759,17 +1759,17 @@
     },
     {
         "name": "hyperf/http-server",
-        "version": "v2.0.11",
-        "version_normalized": "2.0.11.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/http-server.git",
-            "reference": "8f7242c20df62496ea83c1c88ec37141e821c6c5"
+            "reference": "c124282e53bf0dfd9528e8f44f777d220b7ec9b3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/http-server/zipball/8f7242c20df62496ea83c1c88ec37141e821c6c5",
-            "reference": "8f7242c20df62496ea83c1c88ec37141e821c6c5",
+            "url": "https://api.github.com/repos/hyperf/http-server/zipball/c124282e53bf0dfd9528e8f44f777d220b7ec9b3",
+            "reference": "c124282e53bf0dfd9528e8f44f777d220b7ec9b3",
             "shasum": "",
             "mirrors": [
                 {
@@ -1800,7 +1800,7 @@
         "suggest": {
             "hyperf/di": "Required to use annotations."
         },
-        "time": "2020-09-07T10:26:15+00:00",
+        "time": "2020-09-23T02:31:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2150,17 +2150,17 @@
     },
     {
         "name": "hyperf/process",
-        "version": "v2.0.12",
-        "version_normalized": "2.0.12.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/process.git",
-            "reference": "efceff0bae45652fe4e8a8ff093a9c47d346d16b"
+            "reference": "125f0320c3f265629ff153b59a9ed4eb267ba514"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/process/zipball/efceff0bae45652fe4e8a8ff093a9c47d346d16b",
-            "reference": "efceff0bae45652fe4e8a8ff093a9c47d346d16b",
+            "url": "https://api.github.com/repos/hyperf/process/zipball/125f0320c3f265629ff153b59a9ed4eb267ba514",
+            "reference": "125f0320c3f265629ff153b59a9ed4eb267ba514",
             "shasum": "",
             "mirrors": [
                 {
@@ -2189,7 +2189,7 @@
             "hyperf/event": "Required to dump the message before and after process.",
             "hyperf/framework": "Required to use BootProcessListener."
         },
-        "time": "2020-09-14T04:43:30+00:00",
+        "time": "2020-09-24T10:56:15+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2219,17 +2219,17 @@
     },
     {
         "name": "hyperf/redis",
-        "version": "v2.0.12",
-        "version_normalized": "2.0.12.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/redis.git",
-            "reference": "174a431310bec6511a05d9fa1af5c50e919fa30f"
+            "reference": "a9177dad196dd7f44ee38e12b3e95b72bbbe12d8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/redis/zipball/174a431310bec6511a05d9fa1af5c50e919fa30f",
-            "reference": "174a431310bec6511a05d9fa1af5c50e919fa30f",
+            "url": "https://api.github.com/repos/hyperf/redis/zipball/a9177dad196dd7f44ee38e12b3e95b72bbbe12d8",
+            "reference": "a9177dad196dd7f44ee38e12b3e95b72bbbe12d8",
             "shasum": "",
             "mirrors": [
                 {
@@ -2256,7 +2256,7 @@
         "suggest": {
             "hyperf/di": "Create the RedisPool via dependency injection."
         },
-        "time": "2020-09-14T04:43:30+00:00",
+        "time": "2020-09-24T12:45:35+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2287,17 +2287,17 @@
     },
     {
         "name": "hyperf/server",
-        "version": "v2.0.9",
-        "version_normalized": "2.0.9.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/server.git",
-            "reference": "36ac4a0ade97ab6f23c2483dd21dd9a40b083c7c"
+            "reference": "2597dc953d98f3bcdcbf47904e3c3c4a71e172f2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/server/zipball/36ac4a0ade97ab6f23c2483dd21dd9a40b083c7c",
-            "reference": "36ac4a0ade97ab6f23c2483dd21dd9a40b083c7c",
+            "url": "https://api.github.com/repos/hyperf/server/zipball/2597dc953d98f3bcdcbf47904e3c3c4a71e172f2",
+            "reference": "2597dc953d98f3bcdcbf47904e3c3c4a71e172f2",
             "shasum": "",
             "mirrors": [
                 {
@@ -2325,7 +2325,7 @@
             "hyperf/event": "Dump the info after server start.",
             "hyperf/framework": "Dump the info after server start."
         },
-        "time": "2020-08-27T03:43:39+00:00",
+        "time": "2020-09-27T08:25:56+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2426,17 +2426,17 @@
     },
     {
         "name": "hyperf/testing",
-        "version": "v2.0.3",
-        "version_normalized": "2.0.3.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/testing.git",
-            "reference": "4d0ea3d3df7c2ad6c90749a686be3d3bbaf72011"
+            "reference": "a8aa1a38f09f9411ef6576c1ff4fc1c9b6a6c351"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/testing/zipball/4d0ea3d3df7c2ad6c90749a686be3d3bbaf72011",
-            "reference": "4d0ea3d3df7c2ad6c90749a686be3d3bbaf72011",
+            "url": "https://api.github.com/repos/hyperf/testing/zipball/a8aa1a38f09f9411ef6576c1ff4fc1c9b6a6c351",
+            "reference": "a8aa1a38f09f9411ef6576c1ff4fc1c9b6a6c351",
             "shasum": "",
             "mirrors": [
                 {
@@ -2459,7 +2459,7 @@
             "malukenho/docheader": "^0.1.6",
             "mockery/mockery": "^1.0"
         },
-        "time": "2020-07-15T09:05:45+00:00",
+        "time": "2020-09-23T02:31:52+00:00",
         "bin": [
             "co-phpunit"
         ],
@@ -2488,17 +2488,17 @@
     },
     {
         "name": "hyperf/utils",
-        "version": "v2.0.9",
-        "version_normalized": "2.0.9.0",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/utils.git",
-            "reference": "af002ce5a6761f7637194248605a232075a3c46c"
+            "reference": "ffac695fc22fe3443fb9c7ba9398b03268e518e7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/utils/zipball/af002ce5a6761f7637194248605a232075a3c46c",
-            "reference": "af002ce5a6761f7637194248605a232075a3c46c",
+            "url": "https://api.github.com/repos/hyperf/utils/zipball/ffac695fc22fe3443fb9c7ba9398b03268e518e7",
+            "reference": "ffac695fc22fe3443fb9c7ba9398b03268e518e7",
             "shasum": "",
             "mirrors": [
                 {
@@ -2528,7 +2528,7 @@
             "symfony/serializer": "Required to use SymfonyNormalizer (^5.0)",
             "symfony/var-dumper": "Required to use the dd function (^5.0)."
         },
-        "time": "2020-08-30T05:59:53+00:00",
+        "time": "2020-09-23T02:31:52+00:00",
         "type": "library",
         "extra": {
             "hyperf": {
@@ -3742,17 +3742,17 @@
     },
     {
         "name": "phpspec/prophecy",
-        "version": "1.11.1",
-        "version_normalized": "1.11.1.0",
+        "version": "1.12.1",
+        "version_normalized": "1.12.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpspec/prophecy.git",
-            "reference": "b20034be5efcdab4fb60ca3a29cba2949aead160"
+            "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b20034be5efcdab4fb60ca3a29cba2949aead160",
-            "reference": "b20034be5efcdab4fb60ca3a29cba2949aead160",
+            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8ce87516be71aae9b956f81906aaf0338e0d8a2d",
+            "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d",
             "shasum": "",
             "mirrors": [
                 {
@@ -3763,16 +3763,16 @@
         },
         "require": {
             "doctrine/instantiator": "^1.2",
-            "php": "^7.2",
-            "phpdocumentor/reflection-docblock": "^5.0",
+            "php": "^7.2 || ~8.0, <8.1",
+            "phpdocumentor/reflection-docblock": "^5.2",
             "sebastian/comparator": "^3.0 || ^4.0",
             "sebastian/recursion-context": "^3.0 || ^4.0"
         },
         "require-dev": {
             "phpspec/phpspec": "^6.0",
-            "phpunit/phpunit": "^8.0"
+            "phpunit/phpunit": "^8.0 || ^9.0 <9.3"
         },
-        "time": "2020-07-08T12:44:21+00:00",
+        "time": "2020-09-29T09:10:42+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3813,17 +3813,17 @@
     },
     {
         "name": "phpstan/phpstan",
-        "version": "0.12.45",
-        "version_normalized": "0.12.45.0",
+        "version": "0.12.46",
+        "version_normalized": "0.12.46.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpstan/phpstan.git",
-            "reference": "90c67259212ed891ee86604a9368ef7d7bead3a4"
+            "reference": "9419738e20f0c49757be05d22969c1c44c1dff3b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpstan/phpstan/zipball/90c67259212ed891ee86604a9368ef7d7bead3a4",
-            "reference": "90c67259212ed891ee86604a9368ef7d7bead3a4",
+            "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9419738e20f0c49757be05d22969c1c44c1dff3b",
+            "reference": "9419738e20f0c49757be05d22969c1c44c1dff3b",
             "shasum": "",
             "mirrors": [
                 {
@@ -3838,7 +3838,7 @@
         "conflict": {
             "phpstan/phpstan-shim": "*"
         },
-        "time": "2020-09-26T19:19:00+00:00",
+        "time": "2020-09-28T09:48:55+00:00",
         "bin": [
             "phpstan",
             "phpstan.phar"
