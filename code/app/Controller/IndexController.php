@@ -21,18 +21,9 @@ use Hyperf\View\RenderInterface;
  */
 class IndexController extends AbstractController
 {
-    public function index()
+    public function index(RenderInterface $render)
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
-
-        return [
-            'method' => $method,
-            'message' => "Hello {$user}.",
-        ];
+        return $render->render('index/index');
     }
 
-    public function test(RenderInterface $render){
-        return $render->render('index/test', ['name' => 'Hyperf']);
-    }
 }

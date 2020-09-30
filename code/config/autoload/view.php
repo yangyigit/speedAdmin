@@ -18,5 +18,7 @@ return [
     'config' => [
         'view_path' => BASE_PATH . '/storage/view/',
         'cache_path' => BASE_PATH . '/runtime/view/',
+        'layout_on'     =>  true,
+        'layout_name'   =>  'layout',
     ],
 ];
