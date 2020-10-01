@@ -12,7 +12,7 @@ use Hyperf\View\RenderInterface;
  * @package App\Controller
  * @AutoController()
  */
-class HomeController
+class HomeController extends AbstractController
 {
     public function console(RenderInterface $render)
     {
