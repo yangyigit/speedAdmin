@@ -81,8 +81,8 @@
                     </div>
                     <div class="layui-col-xs5">
                         <div style="margin-left: 10px;">
-                            <!--<img src="/User/verifyCode" class="layadmin-user-login-codeimg"
-                                 id="vercode" title="点击刷新">-->
+                            <img src="/user/verifyCode" class="layadmin-user-login-codeimg"
+                                 id="vercode" title="点击刷新">
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
      * 点击刷新验证码
      */
     $("#vercode").click(function () {
-        this.src = '/User/verifyCode?t='+ new Date().getTime()
+        this.src = '/user/verifyCode?t='+ new Date().getTime()
     })
 </script>
 </body>

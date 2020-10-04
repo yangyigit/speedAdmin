@@ -106,6 +106,7 @@ class ComposerStaticInit04d4f4fa6bd60a65fcdf63d8b6d7e2d2
             'Hyperf\\Utils\\' => 13,
             'Hyperf\\Testing\\' => 15,
             'Hyperf\\Task\\' => 12,
+            'Hyperf\\Session\\' => 15,
             'Hyperf\\Server\\' => 14,
             'Hyperf\\Redis\\' => 13,
             'Hyperf\\Process\\' => 15,
@@ -141,6 +142,12 @@ class ComposerStaticInit04d4f4fa6bd60a65fcdf63d8b6d7e2d2
         array (
             'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
+        ),
+        'E' => 
+        array (
+            'EasySwoole\\VerifyCode\\' => 22,
+            'EasySwoole\\Spl\\Test\\' => 20,
+            'EasySwoole\\Spl\\' => 15,
         ),
         'D' => 
         array (
@@ -355,6 +362,10 @@ class ComposerStaticInit04d4f4fa6bd60a65fcdf63d8b6d7e2d2
         array (
             0 => __DIR__ . '/..' . '/hyperf/task/src',
         ),
+        'Hyperf\\Session\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hyperf/session/src',
+        ),
         'Hyperf\\Server\\' => 
         array (
             0 => __DIR__ . '/..' . '/hyperf/server/src',
@@ -470,6 +481,18 @@ class ComposerStaticInit04d4f4fa6bd60a65fcdf63d8b6d7e2d2
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'EasySwoole\\VerifyCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easyswoole/verifycode/src',
+        ),
+        'EasySwoole\\Spl\\Test\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easyswoole/spl/test',
+        ),
+        'EasySwoole\\Spl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easyswoole/spl/src',
         ),
         'Dotenv\\' => 
         array (

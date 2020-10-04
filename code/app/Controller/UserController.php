@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use EasySwoole\VerifyCode\Conf;
+use EasySwoole\VerifyCode\VerifyCode;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\View\RenderInterface;
 
@@ -24,6 +26,20 @@ class UserController extends AbstractController
     public function login(RenderInterface $render)
     {
         return $render->render('user/login');
+    }
+
+    public function verifyCode(){
+        $conf = new Conf();
+        // 开启或关闭混淆曲线
+        $conf->setUseCurve();
+        // 开启或关闭混淆噪点
+        $conf->setUseNoise();
+
+        $code = mt_rand(1111,9999);
+        $this->session->set('verify_code', $code);
+        $vcode = new VerifyCode($code);
+        $codeStr = $vcode->DrawCode($code)->getImageByte();
+        return $codeStr;
     }
 
 }

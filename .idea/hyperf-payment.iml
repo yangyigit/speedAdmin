@@ -11,6 +11,8 @@
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/easyswoole/spl" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/easyswoole/verifycode" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/fig/http-message-util" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/friendsofphp/php-cs-fixer" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/guzzlehttp/guzzle" />
@@ -40,6 +42,7 @@
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/process" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/redis" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/server" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/session" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/task" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/testing" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/utils" />

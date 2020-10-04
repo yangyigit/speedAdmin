@@ -418,6 +418,109 @@
         ]
     },
     {
+        "name": "easyswoole/spl",
+        "version": "1.3.7",
+        "version_normalized": "1.3.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/easy-swoole/spl.git",
+            "reference": "b9d74dfbeb59086c51616ba09d7728cea7351d05"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/easy-swoole/spl/zipball/b9d74dfbeb59086c51616ba09d7728cea7351d05",
+            "reference": "b9d74dfbeb59086c51616ba09d7728cea7351d05",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "ext-json": "*",
+            "php": ">=7.1.0"
+        },
+        "require-dev": {
+            "easyswoole/phpunit": "^1.0",
+            "easyswoole/swoole-ide-helper": "^1.0"
+        },
+        "time": "2020-04-05T15:50:30+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "EasySwoole\\Spl\\": "src/",
+                "EasySwoole\\Spl\\Test\\": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "YF",
+                "email": "291323003@qq.com"
+            }
+        ],
+        "description": "php stander lib",
+        "homepage": "https://www.easyswoole.com/",
+        "keywords": [
+            "async",
+            "easyswoole",
+            "framework",
+            "swoole"
+        ]
+    },
+    {
+        "name": "easyswoole/verifycode",
+        "version": "3.0.2",
+        "version_normalized": "3.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/easy-swoole/verify-code.git",
+            "reference": "d79497dc1b1c7bbaeceb0c62fea6a9a96f7957cb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/easy-swoole/verify-code/zipball/d79497dc1b1c7bbaeceb0c62fea6a9a96f7957cb",
+            "reference": "d79497dc1b1c7bbaeceb0c62fea6a9a96f7957cb",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "easyswoole/spl": "^1.0",
+            "ext-gd": "*",
+            "php": ">=7.1"
+        },
+        "time": "2020-07-28T04:12:59+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "EasySwoole\\VerifyCode\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "YF",
+                "email": "291323003@qq.com"
+            },
+            {
+                "name": "evalor",
+                "email": "mipone@foxmail.com"
+            }
+        ]
+    },
+    {
         "name": "fig/http-message-util",
         "version": "1.1.4",
         "version_normalized": "1.1.4.0",
@@ -2352,6 +2455,69 @@
             "php",
             "server",
             "swoole"
+        ]
+    },
+    {
+        "name": "hyperf/session",
+        "version": "v2.0.13",
+        "version_normalized": "2.0.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hyperf/session.git",
+            "reference": "153f8c2688afd5ab3cf284c3e32c0d8a76a0068e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hyperf/session/zipball/153f8c2688afd5ab3cf284c3e32c0d8a76a0068e",
+            "reference": "153f8c2688afd5ab3cf284c3e32c0d8a76a0068e",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "hyperf/utils": "~2.0.0",
+            "php": ">=7.2",
+            "psr/http-server-middleware": "^1.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.9",
+            "malukenho/docheader": "^0.1.6",
+            "mockery/mockery": "^1.0",
+            "phpunit/phpunit": "^7.0"
+        },
+        "suggest": {
+            "hyperf/config": "Required to load session config.",
+            "psr/container": "Required to use SessionFactory."
+        },
+        "time": "2020-09-21T03:59:18+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            },
+            "hyperf": {
+                "config": "Hyperf\\Session\\ConfigProvider"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Hyperf\\Session\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "A session library",
+        "homepage": "https://hyperf.io",
+        "keywords": [
+            "php",
+            "session"
         ]
     },
     {

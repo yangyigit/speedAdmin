@@ -116,6 +116,9 @@
       <path value="$PROJECT_DIR$/code/vendor/symfony/serializer" />
       <path value="$PROJECT_DIR$/code/vendor/hyperf/task" />
       <path value="$PROJECT_DIR$/code/vendor/sy-records/think-template" />
+      <path value="$PROJECT_DIR$/code/vendor/easyswoole/verifycode" />
+      <path value="$PROJECT_DIR$/code/vendor/easyswoole/spl" />
+      <path value="$PROJECT_DIR$/code/vendor/hyperf/session" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
