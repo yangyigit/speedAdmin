@@ -11,9 +11,12 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Model\User;
 use App\Request\UserRequest;
 use EasySwoole\VerifyCode\Conf;
 use EasySwoole\VerifyCode\VerifyCode;
+use Hyperf\DbConnection\Db;
+use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\View\RenderInterface;
 
@@ -24,11 +27,48 @@ use Hyperf\View\RenderInterface;
  */
 class UserController extends AbstractController
 {
+    private $sessionContainer;
 
-    public function login(RenderInterface $render, UserRequest $userRequest)
+    /**
+     * @Inject()
+     * @var UserRequest
+     */
+    protected $userRequest;
+    public function login(RenderInterface $render)
     {
         if($this->request->isMethod('post')){
-            var_dump($validated = $userRequest->validated());
+            $validated = $this->userRequest->validated();
+            if($validated) {
+                $verify_code = $this->sessionContainer;
+                if (empty($verify_code) || ($validated['vercode'] != $verify_code)){
+                    $this->session->forget('verify_code');
+                    return ['code' => 1, 'msg' => '验证码错误'];
+                }
+
+                $res_user = Db::table('admin')
+                    ->where([
+                        ['username', '=', $validated['username']],
+                        ['password', '=', md5($validated['password'])],
+                        ['status', '=', 1],
+                    ])
+                    ->first();
+
+                if (!empty($res_user)) {
+                    $update_user = Db::table('admin')
+                        ->where('username',$validated['username'])
+                        ->update(['last_login_time' => date('Y-m-d H:i:s')]);
+                    if ($update_user) {
+                        $userModel =  new User();
+                        $userModel->writeStatus($res_user);
+
+                        return ['code' => 0, 'msg' => '登陆成功', 'url' => '/'];
+                    }else {
+                        return ['code' => 1, 'msg' => '登陆失败'];
+                    }
+                }
+
+                return ['code' => 1, 'msg' => '账号或密码错误'];
+            }
         }else{
             return $render->render('user/login');
         }
@@ -43,6 +83,7 @@ class UserController extends AbstractController
 
         $code = mt_rand(1111,9999);
         $this->session->set('verify_code', $code);
+        $this->sessionContainer = $this->session->get('verify_code');
         $vcode = new VerifyCode($code);
         $codeStr = $vcode->DrawCode($code)->getImageByte();
         return $codeStr;
