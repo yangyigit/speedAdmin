@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Request\UserRequest;
 use EasySwoole\VerifyCode\Conf;
 use EasySwoole\VerifyCode\VerifyCode;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -23,9 +24,14 @@ use Hyperf\View\RenderInterface;
  */
 class UserController extends AbstractController
 {
-    public function login(RenderInterface $render)
+
+    public function login(RenderInterface $render, UserRequest $userRequest)
     {
-        return $render->render('user/login');
+        if($this->request->isMethod('post')){
+            var_dump($validated = $userRequest->validated());
+        }else{
+            return $render->render('user/login');
+        }
     }
 
     public function verifyCode(){

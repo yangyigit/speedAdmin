@@ -119,6 +119,9 @@
       <path value="$PROJECT_DIR$/code/vendor/easyswoole/verifycode" />
       <path value="$PROJECT_DIR$/code/vendor/easyswoole/spl" />
       <path value="$PROJECT_DIR$/code/vendor/hyperf/session" />
+      <path value="$PROJECT_DIR$/code/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/code/vendor/hyperf/validation" />
+      <path value="$PROJECT_DIR$/code/vendor/hyperf/translation" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

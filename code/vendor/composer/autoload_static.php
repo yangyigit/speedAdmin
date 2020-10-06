@@ -23,11 +23,12 @@ class ComposerStaticInit04d4f4fa6bd60a65fcdf63d8b6d7e2d2
         '46a9bb9cbc7a6a5c34938373dbe690c3' => __DIR__ . '/..' . '/hyperf/di/src/Functions.php',
         '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '9ecd5fc4cc77829926e562e2b7c63f3a' => __DIR__ . '/..' . '/hyperf/translation/src/Functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'fdea4480df6c5882835d3b60a113de4d' => __DIR__ . '/..' . '/hyperf/config/src/Functions.php',
     );
@@ -103,7 +104,9 @@ class ComposerStaticInit04d4f4fa6bd60a65fcdf63d8b6d7e2d2
         'H' => 
         array (
             'Hyperf\\View\\' => 12,
+            'Hyperf\\Validation\\' => 18,
             'Hyperf\\Utils\\' => 13,
+            'Hyperf\\Translation\\' => 19,
             'Hyperf\\Testing\\' => 15,
             'Hyperf\\Task\\' => 12,
             'Hyperf\\Session\\' => 15,
@@ -145,6 +148,7 @@ class ComposerStaticInit04d4f4fa6bd60a65fcdf63d8b6d7e2d2
         ),
         'E' => 
         array (
+            'Egulias\\EmailValidator\\' => 23,
             'EasySwoole\\VerifyCode\\' => 22,
             'EasySwoole\\Spl\\Test\\' => 20,
             'EasySwoole\\Spl\\' => 15,
@@ -350,9 +354,17 @@ class ComposerStaticInit04d4f4fa6bd60a65fcdf63d8b6d7e2d2
         array (
             0 => __DIR__ . '/..' . '/hyperf/view/src',
         ),
+        'Hyperf\\Validation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hyperf/validation/src',
+        ),
         'Hyperf\\Utils\\' => 
         array (
             0 => __DIR__ . '/..' . '/hyperf/utils/src',
+        ),
+        'Hyperf\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hyperf/translation/src',
         ),
         'Hyperf\\Testing\\' => 
         array (
@@ -481,6 +493,10 @@ class ComposerStaticInit04d4f4fa6bd60a65fcdf63d8b6d7e2d2
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'Egulias\\EmailValidator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
         'EasySwoole\\VerifyCode\\' => 
         array (

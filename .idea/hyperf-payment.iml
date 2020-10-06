@@ -13,6 +13,7 @@
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/easyswoole/spl" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/easyswoole/verifycode" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/fig/http-message-util" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/friendsofphp/php-cs-fixer" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/guzzlehttp/guzzle" />
@@ -45,7 +46,9 @@
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/session" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/task" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/testing" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/translation" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/validation" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/hyperf/view" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/jetbrains/phpstorm-stubs" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/laminas/laminas-mime" />
