@@ -60,7 +60,7 @@ class UserController extends AbstractController
                     if ($update_user) {
                         $userModel =  new User();
                         $userModel->writeStatus($res_user);
-
+                        
                         return ['code' => 0, 'msg' => '登陆成功', 'url' => '/'];
                     }else {
                         return ['code' => 1, 'msg' => '登陆失败'];

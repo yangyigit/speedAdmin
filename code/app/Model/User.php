@@ -20,6 +20,7 @@ use Hyperf\Di\Annotation\Inject;
  */
 class User extends Model
 {
+    public $sessionData = [];
     /**
      * The table associated with the model.
      *
@@ -44,6 +45,7 @@ class User extends Model
      * @var SessionInterface
      */
     private $session;
+
     /**
      * 记录用户状态
      * @param $resUser 用户信息
@@ -55,5 +57,6 @@ class User extends Model
         $this->session->set('admin_userName', $resUser->username);
         $this->session->set('admin_fullName', $resUser->fullname);
         $this->session->set('admin_isAdmin', $resUser->is_admin);
+        $this->sessionData = $this->session->all();
     }
 }
