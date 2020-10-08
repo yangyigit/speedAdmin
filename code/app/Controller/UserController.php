@@ -13,6 +13,7 @@ namespace App\Controller;
 
 use App\Model\User;
 use App\Request\UserRequest;
+use App\Tools\SessionTool;
 use EasySwoole\VerifyCode\Conf;
 use EasySwoole\VerifyCode\VerifyCode;
 use Hyperf\DbConnection\Db;
@@ -40,6 +41,12 @@ class UserController extends AbstractController
      * @var User
      */
     protected $userModel;
+
+    /**
+     * @Inject()
+     * @var SessionTool
+     */
+    protected $session;
 
     public function login(RenderInterface $render)
     {
@@ -83,6 +90,17 @@ class UserController extends AbstractController
         }
     }
 
+    /**
+     * 退出
+     * @param ServerRequest $request
+     * @param Response $response
+     * @return Response
+     */
+    public function logout()
+    {
+        $this->session->clear();
+        return $this->response->redirect('/user/login');
+    }
 
     public function verifyCode(){
         $conf = new Conf();

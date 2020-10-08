@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace App\Model;
 
-use Hyperf\Contract\SessionInterface;
+use App\Tools\SessionTool;
 use Hyperf\DbConnection\Model\Model;
 use Hyperf\Di\Annotation\Inject;
 
@@ -42,7 +42,7 @@ class User extends Model
 
     /**
      * @Inject()
-     * @var SessionInterface
+     * @var SessionTool
      */
     private $session;
 
@@ -57,7 +57,6 @@ class User extends Model
         $this->session->set('admin_userName', $resUser->username);
         $this->session->set('admin_fullName', $resUser->fullname);
         $this->session->set('admin_isAdmin', $resUser->is_admin);
-        $this->sessionData = $this->session->all();
     }
 
     /**
@@ -66,6 +65,6 @@ class User extends Model
      * @return mixed
      */
     public function getUserId(){
-        return $this->sessionData['admin_userId'];
+        return $this->session->get('admin_userId');
     }
 }
