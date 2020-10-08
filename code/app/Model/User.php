@@ -59,4 +59,13 @@ class User extends Model
         $this->session->set('admin_isAdmin', $resUser->is_admin);
         $this->sessionData = $this->session->all();
     }
+
+    /**
+     * 获取用户id
+     * @param $session session对象
+     * @return mixed
+     */
+    public function getUserId(){
+        return $this->sessionData['admin_userId'];
+    }
 }

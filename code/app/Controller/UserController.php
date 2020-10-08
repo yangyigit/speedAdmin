@@ -34,6 +34,13 @@ class UserController extends AbstractController
      * @var UserRequest
      */
     protected $userRequest;
+
+    /**
+     * @Inject()
+     * @var User
+     */
+    protected $userModel;
+
     public function login(RenderInterface $render)
     {
         if($this->request->isMethod('post')){
@@ -58,9 +65,7 @@ class UserController extends AbstractController
                         ->where('username',$validated['username'])
                         ->update(['last_login_time' => date('Y-m-d H:i:s')]);
                     if ($update_user) {
-                        $userModel =  new User();
-                        $userModel->writeStatus($res_user);
-                        
+                        $this->userModel->writeStatus($res_user);
                         return ['code' => 0, 'msg' => '登陆成功', 'url' => '/'];
                     }else {
                         return ['code' => 1, 'msg' => '登陆失败'];
@@ -70,9 +75,14 @@ class UserController extends AbstractController
                 return ['code' => 1, 'msg' => '账号或密码错误'];
             }
         }else{
+            $userId = $this->userModel->getUserId();
+            if (!empty($userId)) {
+                return $this->response->redirect('/');
+            }
             return $render->render('user/login');
         }
     }
+
 
     public function verifyCode(){
         $conf = new Conf();
