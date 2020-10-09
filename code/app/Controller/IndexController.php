@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\View\RenderInterface;
 
@@ -22,8 +23,22 @@ use Hyperf\View\RenderInterface;
 class IndexController
 {
 
+    /**
+     * @Inject()
+     * @var \Hyperf\Contract\SessionInterface
+     */
+    private $session;
+
     public function index(RenderInterface $render)
     {
         return $render->render('index/index');
+    }
+
+    public function test(){
+        var_dump($this->session->all());
+    }
+
+    public function gettest(){
+        $this->session->set('foo', 'test');
     }
 }
