@@ -13,7 +13,6 @@ namespace App\Controller;
 
 use App\Model\User;
 use App\Request\UserRequest;
-use App\Tools\SessionTool;
 use EasySwoole\VerifyCode\Conf;
 use EasySwoole\VerifyCode\VerifyCode;
 use Hyperf\DbConnection\Db;
@@ -28,8 +27,6 @@ use Hyperf\View\RenderInterface;
  */
 class UserController extends AbstractController
 {
-    private $sessionContainer;
-
     /**
      * @Inject()
      * @var UserRequest
@@ -42,18 +39,12 @@ class UserController extends AbstractController
      */
     protected $userModel;
 
-    /**
-     * @Inject()
-     * @var SessionTool
-     */
-    protected $session;
-
     public function login(RenderInterface $render)
     {
         if($this->request->isMethod('post')){
             $validated = $this->userRequest->validated();
             if($validated) {
-                $verify_code = $this->sessionContainer;
+                $verify_code = $this->session->get('verify_code');
                 if (empty($verify_code) || ($validated['vercode'] != $verify_code)){
                     $this->session->forget('verify_code');
                     return ['code' => 1, 'msg' => '验证码错误'];

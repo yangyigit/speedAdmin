@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace App\Model;
 
-use App\Tools\SessionTool;
+use Hyperf\Contract\SessionInterface;
 use Hyperf\DbConnection\Model\Model;
 use Hyperf\Di\Annotation\Inject;
 
@@ -20,7 +20,6 @@ use Hyperf\Di\Annotation\Inject;
  */
 class User extends Model
 {
-    public $sessionData = [];
     /**
      * The table associated with the model.
      *
@@ -42,7 +41,7 @@ class User extends Model
 
     /**
      * @Inject()
-     * @var SessionTool
+     * @var SessionInterface
      */
     private $session;
 
