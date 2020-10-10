@@ -33,5 +33,5 @@ class IndexController
     {
         return $render->render('index/index');
     }
-    
+
 }
