@@ -33,12 +33,5 @@ class IndexController
     {
         return $render->render('index/index');
     }
-
-    public function test(){
-        var_dump($this->session->all());
-    }
-
-    public function gettest(){
-        $this->session->set('foo', 'test');
-    }
+    
 }
