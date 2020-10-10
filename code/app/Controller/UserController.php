@@ -47,7 +47,7 @@ class UserController extends AbstractController
                 $verify_code = $this->session->get('verify_code');
                 if (empty($verify_code) || ($validated['vercode'] != $verify_code)){
                     $this->session->forget('verify_code');
-                    return ['code' => 1, 'msg' => '验证码错误'];
+                    return ['code' => 1, 'msg' => trans('common.alert.verify_code_error')];
                 }
 
                 $res_user = Db::table('admin')
@@ -64,13 +64,13 @@ class UserController extends AbstractController
                         ->update(['last_login_time' => date('Y-m-d H:i:s')]);
                     if ($update_user) {
                         $this->userModel->writeStatus($res_user);
-                        return ['code' => 0, 'msg' => '登陆成功', 'url' => '/'];
+                        return ['code' => 0, 'msg' => trans('common.alert.login_success'), 'url' => '/'];
                     }else {
-                        return ['code' => 1, 'msg' => '登陆失败'];
+                        return ['code' => 1, 'msg' => trans('common.alert.login_error')];
                     }
                 }
 
-                return ['code' => 1, 'msg' => '账号或密码错误'];
+                return ['code' => 1, 'msg' => trans('common.alert.pw_name_error')];
             }
         }else{
             $userId = $this->userModel->getUserId();
