@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Middleware;
 
-use App\Model\User;
+use App\Model\auth\User;
 use Hyperf\Di\Annotation\Inject;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -42,7 +42,7 @@ class GlobalMiddleware implements MiddlewareInterface
         //检查用户是否登录
         $resCheckLoginUser = $this -> checkLoginUser($request);
         if (!$resCheckLoginUser){
-            return $this->response->redirect('/user/login');
+            return $this->response->redirect('admin/user/login');
         }
 
         return $handler->handle($request);

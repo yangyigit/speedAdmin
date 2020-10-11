@@ -38,6 +38,69 @@ if (! function_exists('getServerLocalIp')) {
 }
 
 
+if (! function_exists('groupStatusType')) {
+    /**
+     * 用户组状态
+     * @param $groupStatus
+     * @return string
+     */
+    function groupStatusType($groupStatus)
+    {
+        switch ($groupStatus) {
+            case 0:
+                $groupStatus = '禁用';
+                break;
+            case 1:
+                $groupStatus = '启用';
+                break;
+            default:
+                $groupStatus = '未知';
+        }
+        return $groupStatus;
+    }
+}
 
+if (! function_exists('isAdminStatusType')) {
 
+    /**
+     * 用户管理是否是管理员
+     * @param $isStatus
+     * @return string
+     */
+    function isAdminStatusType($isStatus)
+    {
+        switch ($isStatus) {
+            case 0:
+                $isStatus = '否';
+                break;
+            case 1:
+                $isStatus = '是';
+                break;
+            default:
+                $isStatus = '未知';
+        }
+        return $isStatus;
+    }
+}
 
+if (! function_exists('adminStatusType')) {
+    /**
+     * 用户管理状态
+     * @param $status
+     * @return string
+     */
+    function adminStatusType($status)
+    {
+        switch ($status) {
+            case 0:
+                $status = '停用';
+                break;
+            case 1:
+                $status = '激活';
+                break;
+            default:
+                $status = '未知';
+        }
+        return $status;
+    }
+}

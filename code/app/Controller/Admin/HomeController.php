@@ -1,9 +1,10 @@
 <?php
 
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 
+use App\Controller\BaseController;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\View\RenderInterface;
 
@@ -12,7 +13,7 @@ use Hyperf\View\RenderInterface;
  * @package App\Controller
  * @AutoController()
  */
-class HomeController extends AbstractController
+class HomeController extends BaseController
 {
     public function console(RenderInterface $render)
     {

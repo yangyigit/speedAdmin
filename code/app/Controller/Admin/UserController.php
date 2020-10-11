@@ -9,9 +9,10 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace App\Controller;
+namespace App\Controller\Admin;
 
-use App\Model\User;
+use App\Controller\BaseController;
+use App\Model\auth\User;
 use App\Request\UserRequest;
 use EasySwoole\VerifyCode\Conf;
 use EasySwoole\VerifyCode\VerifyCode;
@@ -25,7 +26,7 @@ use Hyperf\View\RenderInterface;
  * @package App\Controller
  * @AutoController()
  */
-class UserController extends AbstractController
+class UserController extends BaseController
 {
     /**
      * @Inject()
@@ -64,7 +65,7 @@ class UserController extends AbstractController
                         ->update(['last_login_time' => date('Y-m-d H:i:s')]);
                     if ($update_user) {
                         $this->userModel->writeStatus($res_user);
-                        return ['code' => 0, 'msg' => trans('common.alert.login_success'), 'url' => '/'];
+                        return ['code' => 0, 'msg' => trans('common.alert.login_success'), 'url' => '/admin/index/index'];
                     }else {
                         return ['code' => 1, 'msg' => trans('common.alert.login_error')];
                     }
@@ -75,7 +76,7 @@ class UserController extends AbstractController
         }else{
             $userId = $this->userModel->getUserId();
             if (!empty($userId)) {
-                return $this->response->redirect('/');
+                return $this->response->redirect('admin/index/index');
             }
             return $render->render('user/login');
         }
@@ -90,7 +91,7 @@ class UserController extends AbstractController
     public function logout()
     {
         $this->session->clear();
-        return $this->response->redirect('/user/login');
+        return $this->response->redirect('admin/user/login');
     }
 
     public function verifyCode(){

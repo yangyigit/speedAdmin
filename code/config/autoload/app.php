@@ -1,8 +1,8 @@
 <?php
 return [
     'no_login_url'=>[
-        '/user/login',
-        '/user/logout',
-        '/user/verifyCode'
+        '/admin/user/login',
+        '/admin/user/logout',
+        '/admin/user/verifyCode'
     ]
 ];
