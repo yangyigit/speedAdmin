@@ -29,9 +29,19 @@ class IndexController
      */
     private $session;
 
+    /**
+     * @Inject()
+     * @var \App\Tools\Auth
+     */
+    private $auth;
+
     public function index(RenderInterface $render)
     {
         return $render->render('index/index');
+    }
+
+    public function test(){
+        var_dump(config('databases.default.prefix','kong'));
     }
 
 }
