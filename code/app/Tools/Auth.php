@@ -206,13 +206,14 @@ class Auth{
             $this -> _authList[$uid.$t] = array();
             return array();
         }
-        $map[] = ['id','in',$ids];
+//        $map[] = ['id','in',$ids];
         $map[] = ['type','=',$type];
         $map[] = ['status','=',1];
         //读取用户组所有权限规则
         $rules = \Hyperf\DbConnection\Db::table($this->_config['auth_rule'])
             ->select('condition','name')
             ->where($map)
+            ->whereIn('id', $ids)
             ->get();
 
         //循环规则，判断结果。

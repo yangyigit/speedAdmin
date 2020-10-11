@@ -76,18 +76,25 @@ class IndexController extends BaseController
                     }
                 }
             }
-//            $data['menu'] = $this->formatMenu->formatMenu($getRuleList)->cancelSign();
+            $data['menu'] = $this->formatMenu->formatMenu($getRuleList)->cancelSign();
 
         }
 
         $data['admin_fullName'] = $this->session->get('admin_fullName');
 
-        return $render->render('index/index');
+        return $render->render('index/index',$data);
     }
 
     public function test(){
-        $users = Db::table('admin')->get();
-        var_dump($users[0]['id']);
+        $map[] = ['type','=',1];
+        $map[] = ['status','=',1];
+        //读取用户组所有权限规则
+        $rules = Db::table('auth_rule')
+            ->select('condition','name')
+            ->where($map)
+            ->whereIn('id', [1, 2, 3])
+            ->get();
+        var_dump($rules);
     }
 
 }
