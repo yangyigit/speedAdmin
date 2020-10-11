@@ -21,7 +21,7 @@ class Group
         }
 
         $res_auth_rule = Db::table('auth_rule')
-            -> join('auth_rule_parent', ['auth_rule_parent.id', '=', 'auth_rule.p_id'])
+            -> join('auth_rule_parent', 'auth_rule_parent.id', '=', 'auth_rule.p_id')
             -> select(
                 'auth_rule.id',
                 'auth_rule.name',

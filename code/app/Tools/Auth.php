@@ -211,7 +211,7 @@ class Auth{
         $map[] = ['status','=',1];
         //读取用户组所有权限规则
         $rules = \Hyperf\DbConnection\Db::table($this->_config['auth_rule'])
-            ->select('`condition`','`name`')
+            ->select('condition','name')
             ->where($map)
             ->get();
 

@@ -53,10 +53,10 @@ class User extends Model
      */
     public function writeStatus($resUser)
     {
-        $this->session->set('admin_userId', $resUser->id);
-        $this->session->set('admin_userName', $resUser->username);
-        $this->session->set('admin_fullName', $resUser->fullname);
-        $this->session->set('admin_isAdmin', $resUser->is_admin);
+        $this->session->set('admin_userId', $resUser['id']);
+        $this->session->set('admin_userName', $resUser['username']);
+        $this->session->set('admin_fullName', $resUser['fullname']);
+        $this->session->set('admin_isAdmin', $resUser['is_admin']);
     }
 
     /**
@@ -113,7 +113,7 @@ class User extends Model
             $where[] = ['uid', '=', $uid];
 
             $groupName = Db::table('auth_group_access')
-                -> leftJoin('auth_group', ['auth_group_access.group_id', '=', 'auth_group.id'])
+                -> leftJoin('auth_group', 'auth_group_access.group_id', '=', 'auth_group.id')
                 -> select('auth_group.title')
                 -> where($where)
                 -> get();
