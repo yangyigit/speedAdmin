@@ -32,7 +32,8 @@
         "easyswoole/verifycode": "3.x",
         "hyperf/session": "^2.0",
         "hyperf/validation": "^2.0",
-        "hyperf/translation": "^2.0"
+        "hyperf/translation": "^2.0",
+        "yangyi/hyperf-auth": "dev-master"
     },
     "require-dev": {
         "swoole/ide-helper": "^4.5",

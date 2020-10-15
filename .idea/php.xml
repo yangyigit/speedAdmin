@@ -122,6 +122,7 @@
       <path value="$PROJECT_DIR$/code/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/code/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/code/vendor/friendsofphp/php-cs-fixer" />
+      <path value="$PROJECT_DIR$/code/vendor/yangyi/hyperf-auth" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

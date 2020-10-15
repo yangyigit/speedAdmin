@@ -15,7 +15,7 @@ use App\Controller\BaseController;
 use App\Model\auth\Group;
 use App\Model\Index;
 use App\Model\auth\User;
-use App\Tools\Auth;
+use yangyi\hyperf\Auth;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
