@@ -6,6 +6,7 @@ namespace App\Controller\Admin\auth;
 use App\Controller\BaseController;
 use App\Request\RuleRequest;
 use Hyperf\DbConnection\Db;
+use Hyperf\Di\Annotation\Inject;
 use Hyperf\View\RenderInterface;
 
 /**
@@ -15,6 +16,12 @@ use Hyperf\View\RenderInterface;
  */
 class RuleController extends BaseController
 {
+
+    /**
+     * @Inject()
+     * @var RuleRequest
+     */
+    protected $ruleRequest;
     /**
      * ##^列表展示##
      * @param RenderInterface $render
@@ -48,13 +55,13 @@ class RuleController extends BaseController
                 }
                 switch ($v['status']) {
                     case 1:
-                        $v['status'] = '正常';
+                        $v['status'] = trans('common.status.normal');
                         break;
                     case 0:
-                        $v['status'] = '禁用';
+                        $v['status'] = trans('common.status.disable');
                         break;
                     default:
-                        $v['status'] = '未知';
+                        $v['status'] = trans('common.status.unknown');
                 }
             }
 
@@ -71,7 +78,7 @@ class RuleController extends BaseController
                     [
                         'url' => '/auth/Rule/ruleRefresh',
                         'event' => 'refresh',
-                        'name' => '<i class="layui-icon layui-icon-refresh-1"></i>更新',
+                        'name' => '<i class="layui-icon layui-icon-refresh-1"></i>'.trans('common.btn_name.update'),
                         'style' => ''
                     ],
                 ],
@@ -79,7 +86,7 @@ class RuleController extends BaseController
                     [
                         'url' => '/auth/Rule/edit',
                         'event' => 'edit',
-                        'name' => '编辑',
+                        'name' => trans('common.btn_name.edit'),
                         'style' => '',
                     ]
                 ]
@@ -99,7 +106,9 @@ class RuleController extends BaseController
     {
         if ($this->request->isMethod('post')) {
             $data = $this->request->all();
-/*            //检测是否存在，存在就提示失败
+            $validated  = $this->ruleRequest->validated();
+            $data = array_merge($data,$validated);
+            //检测是否存在，存在就提示失败
             $check = Db::table('auth_rule')
                 -> where([
                     'id' => $data['id']
@@ -107,7 +116,7 @@ class RuleController extends BaseController
                 -> first();
 
             if ($check['status'] == $data['status'] && $check['condition'] == $data['condition']) {
-                return $this->response->json(['code' => 0, 'msg' => '内容无变动']);
+                return $this->response->json(['code' => 0, 'msg' => trans('common.alert.content_variable')]);
             }
 
             $update_rule = Db::table('auth_rule')
@@ -119,10 +128,10 @@ class RuleController extends BaseController
                     'condition' => $data['condition']
                 ]);
             if ($update_rule) {
-                return $this->response->json(['code' => 0, 'msg' => '修改成功']);
+                return $this->response->json(['code' => 0, 'msg' => trans('common.alert.edit_success')]);
             } else {
-                return $this->response->json(['code' => 1, 'msg' => '修改失败']);
-            }*/
+                return $this->response->json(['code' => 1, 'msg' => trans('common.alert.edit_error')]);
+            }
         } else {
             $id = $this->request->input('id');
 

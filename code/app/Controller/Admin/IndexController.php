@@ -15,6 +15,7 @@ use App\Controller\BaseController;
 use App\Model\auth\Group;
 use App\Model\Index;
 use App\Model\auth\User;
+use App\Request\RuleRequest;
 use yangyi\hyperf\Auth;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
@@ -85,16 +86,9 @@ class IndexController extends BaseController
         return $render->render('index/index',$data);
     }
 
-    public function test(){
-        $map[] = ['type','=',1];
-        $map[] = ['status','=',1];
-        //读取用户组所有权限规则
-        $rules = Db::table('auth_rule')
-            ->select('condition','name')
-            ->where($map)
-            ->whereIn('id', [1, 2, 3])
-            ->get();
-        var_dump($rules);
+    public function test(RuleRequest $request){
+        $validated = $request->validated();
+        return $validated;
     }
 
 }

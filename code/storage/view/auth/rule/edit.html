@@ -4,17 +4,17 @@
             <form class="layui-form" action="" lay-filter="component-form-group">
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><i class="layui-badge-dot layui-bg-orange"></i> 禁用状态</label>
+                    <label class="layui-form-label"><i class="layui-badge-dot layui-bg-orange"></i> {:trans('common.rule_list_page.disabling')}</label>
                     <div class="layui-input-block">
-                        <input type="radio" name="status" value="1" title="正常" {eq name="info.status" value="1"
+                        <input type="radio" name="status" value="1" title="{:trans('common.status.normal')}" {eq name="info.status" value="1"
                                }checked="" {/eq} >
-                        <input type="radio" name="status" value="0" title="禁用" {eq name="info.status" value="0"
+                        <input type="radio" name="status" value="0" title="{:trans('common.status.disable')}" {eq name="info.status" value="0"
                                }checked="" {/eq} >
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">规则</label>
+                    <label class="layui-form-label">{:trans('common.rule_edit_page.rule')}</label>
                     <div class="layui-input-block">
                         <input type="text" name="condition" autocomplete="off" placeholder=""
                                value="{$info.condition}" class="layui-input">
@@ -25,8 +25,8 @@
                     <div class="layui-input-block">
                         <div class="layui-footer" style="left: 0;">
                             <input type="hidden" name="id" value="{$info.id}">
-                            <button class="layui-btn" lay-submit="" lay-filter="component-form-edit">立即提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <button class="layui-btn" lay-submit="" lay-filter="component-form-edit">{:trans('common.rule_edit_page.submit')}</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">{:trans('common.rule_edit_page.reset')}</button>
                         </div>
                     </div>
                 </div>

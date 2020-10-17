@@ -22,8 +22,8 @@ class RuleRequest extends FormRequest
     public function rules(): array
     {
         return [
-
-            'status' => 'require'
+            'status' => 'required',
+            'id' => 'required',
         ];
     }
 }

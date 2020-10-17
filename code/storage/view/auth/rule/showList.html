@@ -2,12 +2,12 @@
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12">
             <div class="layui-card">
-                <div class="layui-card-header">规则管理</div>
+                <div class="layui-card-header">{:trans('common.rule_list_page.rule_management')}</div>
                 <div class="layui-form layui-card-header layuiadmin-card-header-auto">
                     <div class="layui-form-item">
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">权限名称</label>
+                            <label class="layui-form-label">{:trans('common.rule_list_page.permission_name')}</label>
                             <div class="layui-input-block">
                                 <input name="search_auth_rule#title" placeholder="" autocomplete="off" class="layui-input" type="text">
                                 <input type="hidden" name="type_auth_rule#title" value="like">
@@ -62,13 +62,13 @@
             , limits: [10,20,40,80,160,500,1000,5000,10000]
             , cols: [[
                 {field: 'id', width: 100, title: 'ID', sort: true}
-                , {field: 'title', width: 180, title: '名称'}
-                , {field: 'level', width: 180, title: '权限类型'}
-                , {field: 'p_title', width: 200, title: '父级'}
-                , {field: 'name', width: 280, title: '路径'}
-                , {field: 'status', width: 150, title: '禁用状态'}
-                , {field: 'condition', title: '规则'}
-                , {width: 150, align: 'center', fixed: 'right',title: '操作', toolbar: '#test-table-operate-barDemo'}
+                , {field: 'title', width: 180, title: '{:trans('common.rule_list_page.name')}'}
+                , {field: 'level', width: 180, title: '{:trans('common.rule_list_page.permissions_type')}'}
+                , {field: 'p_title', width: 200, title: '{:trans('common.rule_list_page.parent')}'}
+                , {field: 'name', width: 280, title: '{:trans('common.rule_list_page.path')}'}
+                , {field: 'status', width: 150, title: '{:trans('common.rule_list_page.disabling')}'}
+                , {field: 'condition', title: '{:trans('common.rule_list_page.rule')}'}
+                , {width: 150, align: 'center', fixed: 'right',title: '{:trans('common.rule_list_page.operation')}', toolbar: '#test-table-operate-barDemo'}
             ]],
             page:true
         });
@@ -87,7 +87,7 @@
         //监听工具栏
         table.on('toolbar(test-table-page)', function (obj) {
             if (obj.event === 'refresh') {
-                layer.confirm('确认刷新吗？请开发完成后进行刷新', function (index) {
+                layer.confirm('{:trans('common.rule_list_page.confirm_refresh')}', function (index) {
                     $.ajax({
                         'url':'ruleRefresh',
                         'data':{},
@@ -120,7 +120,7 @@
             if (obj.event === 'edit') {
                 layer.open({
                     type: 2,
-                    title: '编辑规则',
+                    title: '{:trans('common.rule_list_page.editing_rules')}',
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
