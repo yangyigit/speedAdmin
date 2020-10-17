@@ -1,0 +1,181 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">用户</div>
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                    <div class="layui-form-item">
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-inline">
+                                <input name="search_admin#username" autocomplete="off" class="layui-input" type="text">
+                                <input type="hidden" name="type_admin#username" value="like">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">姓名</label>
+                            <div class="layui-input-inline">
+                                <input name="search_admin_fullname" autocomplete="off" class="layui-input" type="text">
+                                <input type="hidden" name="type_admin_fullname" value="like">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <button class="layui-btn layuiadmin-btn-useradmin" lay-submit="" lay-filter="LAY-list-search">
+                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="test-table-page" lay-filter="test-table-page"></table>
+                    <script type="text/html" id="test-table-operate-barDemo">
+                        {volist name="btn.table" id="voo"}
+                        <a class="layui-btn {$voo.style} layui-btn-xs" lay-event="{$voo.event}">{$voo.name}</a>
+                        {/volist}
+                    </script>
+                    <script type="text/html" id="toolbar">
+                        {volist name="btn.top" id="voo"}
+                        <button class="layui-btn layui-btn-sm {$voo.style}" lay-event="{$voo.event}">
+                            {$voo.name|raw}
+                        </button>
+                        {/volist}
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    layui.config({
+        base: '/static/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table'], function () {
+        const admin = layui.admin
+            , form = layui.form
+            , table = layui.table;
+
+        table.render({
+            elem: '#test-table-page'
+            , url: 'showList'
+            , toolbar: "#toolbar"
+            , defaultToolbar: ['filter', 'exports', 'print']
+            , limit: 10
+            , limits: [10,20,40,80,160,500,1000,5000,10000]
+            , cols: [[
+                {field: 'id', width: 80, title: 'ID', sort: true}
+                , {field: 'username', width: 180, title: '用户名'}
+                , {field: 'fullname', width: 150, title: '姓名'}
+                , {field: 'status', width: 80, title: '状态'}
+                , {field: 'group', title: '所属组'}
+                , {width: 250, align: 'center', fixed: 'right', toolbar: '#test-table-operate-barDemo'}
+            ]],
+            page:true
+        });
+
+
+        //监听搜索
+        form.on('submit(LAY-list-search)', function(data){
+            console.log(data);
+            const field = data.field;
+
+            //执行重载
+            table.reload('test-table-page', {
+                where: field,
+                page: {curr: 1}
+            });
+        });
+
+        //监听工具栏
+        table.on('toolbar(test-table-page)', function (obj) {
+            if (obj.event === 'add') {
+                layer.open({
+                    type: 2,
+                    title: '添加用户',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['100%', '100%'],
+                    content: "{:Url('admin/auth.User/add')}",
+                    cancel: function(){
+                        table.reload('test-table-page');
+                    }
+                });
+            }
+        })
+
+        //监听工具条
+        table.on('tool(test-table-page)', function (obj) {
+            const data = obj.data;
+            if (obj.event === 'detail') {
+                layer.open({
+                    type: 2,
+                    title: '查看用户',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['100%', '100%'],
+                    content: '{:Url("admin/auth.User/look")}?id=' + data.id
+                });
+                //top.layui.index.openTabsPage('{:Url("rbac.User/look")}?id=' + data.id, '查看用户信息');
+            } else if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                    $.ajax({
+                        'url':"del",
+                        'data':{
+                            'id':data.id
+                        },
+                        'success':function(data){
+                            if(data.code === 0){
+                                layer.alert(data.msg,{
+                                    closeBtn: 0
+                                },function (index) {
+                                    table.reload('test-table-page');
+                                    obj.del();
+                                    layer.close(index);
+                                });
+                            }else{
+                                layer.alert(data.msg,{
+                                    skin: 'layui-layer-error' //样式类名
+                                    ,closeBtn: 0
+                                });
+                            }
+                        },
+                        'dataType':'json',//返回的格式
+                        'type':'post',//发送的格式
+                    });
+                    layer.close(index);
+                });
+            } else if (obj.event === 'edit') {
+                layer.open({
+                    type: 2,
+                    title: '编辑用户',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['100%', '100%'],
+                    content: '{:Url("admin/auth.User/edit")}?id=' + data.id,
+                    cancel: function(){
+                        table.reload('test-table-page');
+                    }
+                });
+            }else if (obj.event === 'allot') {
+                layer.open({
+                    type: 2,
+                    title: '分配用户组',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['100%', '100%'],
+                    content: '{:Url("admin/auth.User/allot")}?id=' + data.id,
+                    cancel: function(){
+                        table.reload('test-table-page');
+                    }
+                });
+            }
+        });
+    });
+</script>

@@ -104,3 +104,102 @@ if (! function_exists('adminStatusType')) {
         return $status;
     }
 }
+
+
+if (! function_exists('createSearchWhere')) {
+
+    /**
+     * 构建后台搜索条件
+     * @param $requestData
+     * @return array
+     */
+    function createSearchWhere($requestData){
+        $where = [];
+        foreach ($requestData as $k => $v) {
+            $k = trim($k);
+            $v = trim($v);
+            if(strpos($k, '#') && !empty($v)){
+                list($table, $field, $type) = explode('#', $k);
+                switch ($type){
+                    case '=':
+                        //相等
+                        $search_type = '=';
+                        $search_value = $v;
+                        break;
+                    case 'like':
+                        $search_type = 'like';
+                        $search_value = '%'.$v.'%';
+                        break;
+                    case 'time':
+                        $search_type = 'between';
+                        $search_value = explode(' - ', $v);
+                        $search_value = [$search_value[0], $search_value[1]];
+                        break;
+                    default:
+                        $search_type = '=';
+                        $search_value = $v;
+                }
+
+                $where[] = [$table.'.'.$field, $search_type, $search_value];
+            }
+        }
+        return $where;
+    }
+}
+
+if (! function_exists('btnShow')) {
+
+    /**
+     * 筛选有权限显示的按钮
+     * @param array $btns 按钮数据
+     * @param $session session类
+     * @return array
+     */
+    function btnShow(array $btns, $session){
+        $UserModel = new \App\Model\auth\User();
+        $userId = $UserModel -> getUserId($session);
+
+        $auth = new \yangyi\hyperf\Auth();
+
+        $data = \Hyperf\DbConnection\Db::table('auth_rule')
+            -> select('name')
+            -> where([
+                ['status', '=', 1]
+            ])
+            -> get();
+
+        $new_arr = [];
+        foreach ($data as $k => $v) {
+            if (!$auth->check([], $v['name'], $userId) && empty($session -> get('admin_isAdmin'))) {
+                unset($data[$k]);
+            }else{
+                $new_arr[] = $v['name'];
+            }
+        }
+        foreach ($btns as $kb=>$vb) {
+            foreach ($btns[$kb] as $kvb=>$vvb) {
+                if(!in_array($vvb['url'],$new_arr)){
+                    unset($btns[$kb][$kvb]);
+                }
+            }
+        }
+        return $btns;
+    }
+}
+
+if (! function_exists('getOffset')) {
+
+    /**
+     * 获取offset
+     * @param $requestData
+     * @return int
+     */
+    function getOffset($requestData){
+        if(empty($requestData['page']) || empty($requestData['limit'])){
+            return 0;
+        }
+        return ((int)$requestData['page'] - 1) * (int)($requestData['limit']);
+    }
+
+
+}

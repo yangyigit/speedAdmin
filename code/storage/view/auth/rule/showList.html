@@ -1,0 +1,135 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">规则管理</div>
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                    <div class="layui-form-item">
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">权限名称</label>
+                            <div class="layui-input-block">
+                                <input name="search_auth_rule#title" placeholder="" autocomplete="off" class="layui-input" type="text">
+                                <input type="hidden" name="type_auth_rule#title" value="like">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <button class="layui-btn layuiadmin-btn-useradmin" lay-submit="" lay-filter="LAY-list-search">
+                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="test-table-page" lay-filter="test-table-page"></table>
+                    <script type="text/html" id="test-table-operate-barDemo">
+                        {volist name="btn.table" id="voo"}
+                        <a class="layui-btn {$voo.style} layui-btn-xs" lay-event="{$voo.event}">{$voo.name}</a>
+                        {/volist}
+                    </script>
+                    <script type="text/html" id="toolbar">
+                        {volist name="btn.top" id="voo"}
+                        <button class="layui-btn layui-btn-sm {$voo.style}" lay-event="{$voo.event}">
+                            {$voo.name|raw}
+                        </button>
+                        {/volist}
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.config({
+        base: '/static/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table'], function () {
+        const admin = layui.admin
+            , form = layui.form
+            , table = layui.table;
+
+        table.render({
+            elem: '#test-table-page'
+            , url: 'showList'
+            , toolbar: "#toolbar"
+            , defaultToolbar: ['filter', 'exports', 'print']
+            , limit: 10
+            , limits: [10,20,40,80,160,500,1000,5000,10000]
+            , cols: [[
+                {field: 'id', width: 100, title: 'ID', sort: true}
+                , {field: 'title', width: 180, title: '名称'}
+                , {field: 'level', width: 180, title: '权限类型'}
+                , {field: 'p_title', width: 200, title: '父级'}
+                , {field: 'name', width: 280, title: '路径'}
+                , {field: 'status', width: 150, title: '禁用状态'}
+                , {field: 'condition', title: '规则'}
+                , {width: 150, align: 'center', fixed: 'right',title: '操作', toolbar: '#test-table-operate-barDemo'}
+            ]],
+            page:true
+        });
+
+        //监听搜索
+        form.on('submit(LAY-list-search)', function(data){
+            const field = data.field;
+
+            //执行重载
+            table.reload('test-table-page', {
+                where: field,
+                page: {curr: 1}
+            });
+        });
+
+        //监听工具栏
+        table.on('toolbar(test-table-page)', function (obj) {
+            if (obj.event === 'refresh') {
+                layer.confirm('确认刷新吗？请开发完成后进行刷新', function (index) {
+                    $.ajax({
+                        'url':'ruleRefresh',
+                        'data':{},
+                        'success':function(data){
+                            if (data.code === 0) {
+                                layer.alert(data.msg,{
+                                    closeBtn: 0
+                                },function (index) {
+                                    table.reload('test-table-page');
+                                    layer.close(index);
+                                });
+                            } else {
+                                layer.alert(data.msg,{
+                                    skin: 'layui-layer-error' //样式类名
+                                    ,closeBtn: 0
+                                });
+                            }
+                        },
+                        'dataType':'json',//返回的格式
+                        'type':'post',//发送的格式
+                    });
+                    layer.close(index);
+                });
+            }
+        })
+
+        //监听工具条
+        table.on('tool(test-table-page)', function (obj) {
+            let data = obj.data;
+            if (obj.event === 'edit') {
+                layer.open({
+                    type: 2,
+                    title: '编辑规则',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['100%', '100%'],
+                    content: "/auth/Rule/edit?id=" + data.id,
+                    cancel: function(){
+                        table.reload('test-table-page');
+                    }
+                });
+            }
+        });
+    });
+</script>
