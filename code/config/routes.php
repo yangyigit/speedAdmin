@@ -16,6 +16,7 @@ use Hyperf\HttpServer\Router\Router;
 Router::addGroup('/auth',function (){
     Router::get('/User/showList','App\Controller\Admin\auth\UserController@showList');
     Router::get('/Rule/showList','App\Controller\Admin\auth\RuleController@showList');
+    Router::addRoute(['GET', 'POST', 'HEAD'],'/Rule/ruleRefresh','App\Controller\Admin\auth\RuleController@ruleRefresh');
     Router::addRoute(['GET', 'POST', 'HEAD'], '/Rule/edit', 'App\Controller\Admin\auth\RuleController@edit');
 });
 

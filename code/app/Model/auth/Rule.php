@@ -14,12 +14,12 @@ class Rule extends Model
     public function refreshRule()
     {
         //应用地址
-        $admin_dir_path = __DIR__."/../../Controllers";
+        $admin_dir_path = __DIR__."/../../Controller/Admin";
         //控制器路径 = 命名空间
-        $controller_path = 'App\Admin\Controllers\\';
-
+        $controller_path = 'App\Controller\Admin\\';
         //获取一级控制器
         $dirRes = opendir($admin_dir_path);
+
         while (($dir = readdir($dirRes)) !== false) {
             //过滤特殊文件
             if (!in_array($dir, array('.', '..', '.svn'))) {

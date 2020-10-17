@@ -4,6 +4,7 @@
 namespace App\Controller\Admin\auth;
 
 use App\Controller\BaseController;
+use App\Model\auth\Rule;
 use App\Request\RuleRequest;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
@@ -149,10 +150,9 @@ class RuleController extends BaseController
     /**
      * ##规则刷新##
      */
-    public function ruleRefresh()
+    public function ruleRefresh(Rule $rule)
     {
-        $ruleModel = new RuleModel();
-        $refresh = $ruleModel->refreshRule();
-        return ResponseHelper::json($response, ['code' => $refresh['code'], 'msg' => $refresh['info']]);
+        $refresh = $rule->refreshRule();
+        return $this->response->json(['code' => $refresh['code'], 'msg' => $refresh['info']]);
     }
 }
