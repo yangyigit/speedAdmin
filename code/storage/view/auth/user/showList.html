@@ -102,7 +102,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: "{:Url('admin/auth.User/add')}",
+                    content: "/admin/User/add",
                     cancel: function(){
                         table.reload('test-table-page');
                     }
@@ -120,9 +120,8 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: '{:Url("admin/auth.User/look")}?id=' + data.id
+                    content: '/admin/User/look?id=' + data.id
                 });
-                //top.layui.index.openTabsPage('{:Url("rbac.User/look")}?id=' + data.id, '查看用户信息');
             } else if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
                     $.ajax({
@@ -158,7 +157,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: '{:Url("admin/auth.User/edit")}?id=' + data.id,
+                    content: '/admin/User/edit?id=' + data.id,
                     cancel: function(){
                         table.reload('test-table-page');
                     }
@@ -170,7 +169,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: '{:Url("admin/auth.User/allot")}?id=' + data.id,
+                    content: '/admin/auth.User/allot?id=' + data.id,
                     cancel: function(){
                         table.reload('test-table-page');
                     }

@@ -7,6 +7,7 @@ use App\Controller\BaseController;
 use App\Model\auth\User;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
+use Hyperf\Utils\Context;
 use Hyperf\View\RenderInterface;
 
 /**
@@ -29,9 +30,10 @@ class UserController extends BaseController
     public function showList(RenderInterface $render)
     {
 
-        if ($this->request->isMethod('post')) {
+        if (isAjax($this->request)) {
             $requestData = $this->request -> all();
             $map = createSearchWhere($requestData);
+
 
             $countUser = Db::table('admin')
                 ->where($map)
@@ -44,9 +46,11 @@ class UserController extends BaseController
                 ->get();
 
             foreach ($resUser as $k => $v) {
+
                 $resUser[$k]['group'] = implode(' | ', $this->userModel->getGroupName($v['id']));
                 $resUser[$k]['status'] = adminStatusType($v['status']);
             }
+
             $data['code'] = 0;
             $data['count'] = $countUser;
             $data['data'] = $resUser;
@@ -95,8 +99,7 @@ class UserController extends BaseController
 
             $data['btn'] = btnShow($btn, $this->session);
 
-            return $render->render('auth/user/showList
-            ',$data);
+            return $render->render('auth/user/showList',$data);
         }
     }
 }

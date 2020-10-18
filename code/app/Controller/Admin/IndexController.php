@@ -86,9 +86,13 @@ class IndexController extends BaseController
         return $render->render('index/index',$data);
     }
 
-    public function test(RuleRequest $request){
-        $validated = $request->validated();
-        return $validated;
+    public function test(){
+        $resUser = Db::table('admin')->get();
+        foreach ($resUser as $k=>$item) {
+            $resUser[$k]['status'] = adminStatusType($item['status']);
+            $resUser[$k]['is_admin'] = '管理员';
+        }
+       var_dump($resUser);
     }
 
 }

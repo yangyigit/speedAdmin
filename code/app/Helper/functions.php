@@ -201,5 +201,16 @@ if (! function_exists('getOffset')) {
         return ((int)$requestData['page'] - 1) * (int)($requestData['limit']);
     }
 
+}
 
+if(! function_exists('isAjax')){
+
+    /**
+     * 判断是否是ajax请求
+     * @param $requestData
+     * @return float|int
+     */
+    function isAjax($request){
+        return $request->getHeader("X-Requested-With");
+    }
 }

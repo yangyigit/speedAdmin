@@ -30,7 +30,7 @@ class RuleController extends BaseController
      */
     public function showList(RenderInterface $render)
     {
-        if ($this->request->getHeader("X-Requested-With")) {
+        if (isAjax($this->request)) {
             $requestData = $this->request -> all();
             $map = createSearchWhere($requestData);
 
