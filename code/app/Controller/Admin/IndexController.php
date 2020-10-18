@@ -87,12 +87,18 @@ class IndexController extends BaseController
     }
 
     public function test(){
+        /*        $resUser = [
+          ['status' => 1]  ,
+          ['status' => 0]  ,
+          ['status' => 1]
+        ];*/
         $resUser = Db::table('admin')->get();
-        foreach ($resUser as $k=>$item) {
-            $resUser[$k]['status'] = adminStatusType($item['status']);
-            $resUser[$k]['is_admin'] = '管理员';
+
+        foreach ($resUser as &$item) {
+            $item['status'] = adminStatusType($item['status']);
+            $item['is_admin'] = '管理员';
         }
-       var_dump($resUser);
+       return $resUser;
     }
 
 }
