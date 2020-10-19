@@ -44,7 +44,8 @@ class RuleController extends BaseController
                 -> where($map)
                 -> offset(getOffset($requestData))
                 -> limit($requestData['limit'])
-                -> get();
+                -> get()
+                ->toArray();
 
             foreach ($data_res as &$v) {
                 $ear = substr($v['title'], 0, 1);
