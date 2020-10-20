@@ -113,36 +113,44 @@ if (! function_exists('createSearchWhere')) {
      * @param $requestData
      * @return array
      */
-    function createSearchWhere($requestData){
+    function createSearchWhere($requestData)
+    {
         $where = [];
         foreach ($requestData as $k => $v) {
-            $k = trim($k);
-            $v = trim($v);
-            if(strpos($k, '#') && !empty($v)){
-                list($table, $field, $type) = explode('#', $k);
-                switch ($type){
-                    case '=':
-                        //相等
-                        $search_type = '=';
-                        $search_value = $v;
-                        break;
-                    case 'like':
-                        $search_type = 'like';
-                        $search_value = '%'.$v.'%';
-                        break;
-                    case 'time':
-                        $search_type = 'between';
-                        $search_value = explode(' - ', $v);
-                        $search_value = [$search_value[0], $search_value[1]];
-                        break;
-                    default:
-                        $search_type = '=';
-                        $search_value = $v;
-                }
+            if (mb_substr($k, 0, 7) == 'search_' && (strlen($v) > 0)) {
+                $k_name_tmp = mb_substr($k, 7);
+                list($table, $field) = explode('#', $k_name_tmp);
+                $search_name = $table.'.'.$field;
 
-                $where[] = [$table.'.'.$field, $search_type, $search_value];
+                $search_value = $v;
+
+                $search_type = '=';
+                foreach ($requestData as $kk => $vv) {
+                    if ($kk == 'type_'.mb_substr($k, 7)) {
+                        switch ($vv) {
+                            case 'eq':
+                                //相等
+                                $search_type = '=';
+                                break;
+                            case 'like':
+                                $search_type = 'like';
+                                $search_value = '%'.$search_value.'%';
+                                break;
+                            case 'time':
+                                $search_type = 'between';
+                                $search_value = explode(' - ', $search_value);
+                                $search_value = [$search_value[0], $search_value[1]];
+                                break;
+                        }
+                    }
+                    continue;
+                }
+                $tmp = [$search_name, $search_type, $search_value];
+
+                $where[] = $tmp;
             }
         }
+
         return $where;
     }
 }
@@ -155,7 +163,8 @@ if (! function_exists('btnShow')) {
      * @param $session session类
      * @return array
      */
-    function btnShow(array $btns, $session){
+    function btnShow(array $btns, $session)
+    {
         $UserModel = new \App\Model\auth\User();
         $userId = $UserModel -> getUserId($session);
 
@@ -172,13 +181,13 @@ if (! function_exists('btnShow')) {
         foreach ($data as $k => $v) {
             if (!$auth->check([], $v['name'], $userId) && empty($session -> get('admin_isAdmin'))) {
                 unset($data[$k]);
-            }else{
+            } else {
                 $new_arr[] = $v['name'];
             }
         }
         foreach ($btns as $kb=>$vb) {
             foreach ($btns[$kb] as $kvb=>$vvb) {
-                if(!in_array($vvb['url'],$new_arr)){
+                if (!in_array($vvb['url'], $new_arr)) {
                     unset($btns[$kb][$kvb]);
                 }
             }
@@ -194,23 +203,24 @@ if (! function_exists('getOffset')) {
      * @param $requestData
      * @return int
      */
-    function getOffset($requestData){
-        if(empty($requestData['page']) || empty($requestData['limit'])){
+    function getOffset($requestData)
+    {
+        if (empty($requestData['page']) || empty($requestData['limit'])) {
             return 0;
         }
         return ((int)$requestData['page'] - 1) * (int)($requestData['limit']);
     }
-
 }
 
-if(! function_exists('isAjax')){
+if (! function_exists('isAjax')) {
 
     /**
      * 判断是否是ajax请求
      * @param $requestData
      * @return float|int
      */
-    function isAjax($request){
+    function isAjax($request)
+    {
         return $request->getHeader("X-Requested-With");
     }
 }
