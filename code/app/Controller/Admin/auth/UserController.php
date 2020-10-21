@@ -5,6 +5,7 @@ namespace App\Controller\Admin\auth;
 
 use App\Controller\BaseController;
 use App\Model\auth\User;
+use App\Request\AdminRequest;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\Utils\Context;
@@ -22,6 +23,12 @@ class UserController extends BaseController
      * @var User
      */
     protected $userModel;
+
+    /**
+     * @Inject()
+     * @var AdminRequest
+     */
+    protected $adminRequest;
 
     /**
      * ##^用户列表##
@@ -101,6 +108,31 @@ class UserController extends BaseController
             $data['btn'] = btnShow($btn, $this->session);
 
             return $render->render('auth/user/showList',$data);
+        }
+    }
+
+    /**
+     * ##添加##
+     * @return int
+     */
+    public function add(RenderInterface $render){
+        if ($this->request->isMethod('post')){
+            $data = $this->request->all();
+            $validated  = $this->adminRequest->validated();
+            $data = array_merge($data,$validated);
+            $data['password'] = md5($data['password']);
+            $data['create_time'] = date('Y-m-d H:i:s');
+
+            $resUser = Db::table('admin')
+                ->insert($data);
+
+            if ($resUser) {
+                return $this->response->json(['code' => 0, 'msg' => trans('common.alert.add_success')]);
+            } else {
+                return $this->response->json(['code' => 1, 'msg' => trans('common.alert.add_error')]);
+            }
+        }else{
+            return $render->render('auth/user/add');
         }
     }
 }

@@ -14,6 +14,8 @@ return [
         'content_variable'=>'无修改内容',
         'edit_success'=>'修改成功',
         'edit_error'=>'修改失败',
+        'add_success'=>'添加成功',
+        'add_error'=>'添加失败',
     ],
     'status'=>[
         'normal'=>'正常',

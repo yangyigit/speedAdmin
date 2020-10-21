@@ -102,7 +102,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: "/admin/User/add",
+                    content: "/auth/User/add",
                     cancel: function(){
                         table.reload('test-table-page');
                     }
@@ -120,7 +120,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: '/admin/User/look?id=' + data.id
+                    content: '/auth/User/look?id=' + data.id
                 });
             } else if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
@@ -157,7 +157,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: '/admin/User/edit?id=' + data.id,
+                    content: '/auth/User/edit?id=' + data.id,
                     cancel: function(){
                         table.reload('test-table-page');
                     }
@@ -169,7 +169,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: '/admin/auth.User/allot?id=' + data.id,
+                    content: '/auth/User/allot?id=' + data.id,
                     cancel: function(){
                         table.reload('test-table-page');
                     }
