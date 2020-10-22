@@ -1,0 +1,91 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <!--<form class="layui-form" action="allot" method="post" lay-filter="component-form-group">-->
+                    <div  class="layui-form">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="20">
+                                <col>
+                                <col>
+                                <col width="60">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>名称</th>
+                                <th>状态</th>
+                                <th>描述</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="resgroup" id="vo"}
+                            <tr>
+                                <td><input type="checkbox" lay-skin="primary" name="id[]" value="{$vo.id}" {eq name="vo['checked']" value="1"}checked{/eq}></td>
+                                <td>{$vo.title}</td>
+                                <td>{$vo.describe}</td>
+                                <td>{$vo.status}</td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+
+                        <div class="layui-form-item layui-layout-admin">
+                            <div class="layui-input-block">
+                                <div class="layui-footer" style="left: 0;">
+                                    <input type="hidden" name="uid" value="{$uid}">
+                                    <button class="layui-btn" lay-submit="" lay-filter="component-form-allot">立即提交
+                                    </button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--</form>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    layui.config({
+        base: '/static/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate'], function () {
+        var form = layui.form;
+
+        form.on('submit(component-form-allot)', function(data){
+
+            var field = data.field;
+            $.ajax({
+                'url': "allot",
+                'data': field,
+                'success': function (data) {
+                    if(data.code === 0){
+                        layer.alert(data.msg,{
+                            closeBtn: 0
+                        },function (index) {
+                            location.reload();
+                            layer.close(index);
+                        });
+                    }else{
+                        layer.alert(data.msg,{
+                            skin: 'layui-layer-error' //样式类名
+                            ,closeBtn: 0
+                        });
+                    }
+                },
+                'dataType': 'json',//返回的格式
+                'type': 'post',//发送的格式
+            });
+            //
+        });
+
+        form.render(null, 'component-form-group');
+    });
+</script>

@@ -5,6 +5,7 @@ namespace App\Controller\Admin\auth;
 
 use App\Controller\BaseController;
 use App\Model\auth\User;
+use App\Request\AdminEditRequest;
 use App\Request\AdminRequest;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
@@ -29,6 +30,8 @@ class UserController extends BaseController
      * @var AdminRequest
      */
     protected $adminRequest;
+
+
 
     /**
      * ##^用户列表##
@@ -133,6 +136,149 @@ class UserController extends BaseController
             }
         }else{
             return $render->render('auth/user/add');
+        }
+    }
+
+    /**
+     * ##查看##
+     * @return mixed
+     */
+    public function look(RenderInterface $render)
+    {
+        $id = $this->request->input('id');
+
+        $resUser = $this->userModel->look($id);
+
+        return $render->render('auth/user/look', ['info' => $resUser]);
+    }
+
+
+    /**
+     * ##编辑##
+     * @return mixed
+     */
+    public function edit(RenderInterface $render)
+    {
+        if ($this->request -> isMethod('post')){
+            $data = $this->request->all();
+            $validated  = $this->adminRequest->validated();
+            $data = array_merge($data,$validated);
+
+            $data['update_time'] = date('Y-m-d H:i:s');
+            if ($data['password'] != '****') {
+                $data['password'] = md5($data['password']);
+            }else{
+                unset($data['password']);
+            }
+
+            $resUser = Db::table('admin')
+                ->where('id',$data['id'])
+                ->update($data);
+
+            if ($resUser) {
+                return $this->response->json(['code' => 0, 'msg' => trans('common.alert.edit_success')]);
+            } else {
+                return $this->response->json(['code' => 1, 'msg' => trans('common.alert.edit_error')]);
+            }
+        }else{
+            $id = $this->request->input('id');
+
+            $resUser = $this->userModel -> look($id);
+
+        return $render->render('auth/user/edit', ['info' => $resUser]);
+        }
+    }
+
+    /**
+     * ##删除##
+     */
+    public function del()
+    {
+        $id = $this->request->input('id');
+
+        Db::beginTransaction();
+        //删除用户信息
+        try {
+            $resUser = Db::table('admin')
+                ->where('id', '=', $id)
+                ->delete();
+
+            //删除用户对应角色的信息
+            Db::table('auth_group_access')
+                ->where('uid', '=', $id)
+                ->delete();
+        }catch (\Exception $e) {
+            Db::rollBack();
+
+            return $this->response->json(['code' => 1, 'msg' => trans('common.alert.del_error')]);
+        }
+
+        if ($resUser){
+            Db::commit();
+
+            return $this->response->json(['code' => 0, 'msg' => trans('common.alert.del_success')]);
+        }else{
+            Db::rollBack();
+
+            return $this->response->json(['code' => 1, 'msg' => trans('common.alert.del_error')]);
+        }
+    }
+
+
+    /**
+     * ##分配##
+     * @param ServerRequest $request
+     * @return mixed
+     */
+    public function allot(RenderInterface $render)
+    {
+        if ($this->request -> isMethod('post')){
+            $data = $this->request->all();
+
+            if (empty($data['uid'])){
+                return $this->response->json(['code' => 1, 'msg' => trans('common.user_alert.user_choose_error')]);
+            }
+
+            $roleData = array();
+            if (isset($data['id'])){
+                foreach ($data['id'] as $k => $v) {
+                    $roleData[] = $v;
+                }
+            }
+
+            //分配角色
+            $resUserRole = Db::table('auth_group_access')
+                ->where('uid', '=', $data['uid'])
+                ->delete();
+
+            if (empty($roleData)){
+                $resUser = true;
+            }else{
+                $dataGather = [];
+                foreach ($roleData as $k=>$v) {
+                    $tmp['uid'] = $data['uid'];
+                    $tmp['group_id'] = $v;
+                    $dataGather[] = $tmp;
+                }
+
+                $resUser = Db::table('auth_group_access')
+                    ->insert($dataGather);
+            }
+
+            if ($resUserRole && $resUser) {
+                return $this->response->json(['code' => 0, 'msg' => trans('common.user_alert.allot_success')]);
+            } else {
+                return $this->response->json(['code' => 1, 'msg' => trans('common.user_alert.allot_error')]);
+            }
+        }else{
+
+            $id = $this->request->input('id');
+
+
+            $resGroup = $this->userModel->getGroup($id);
+
+            return $render->render('auth/user/allot', ['resgroup' => $resGroup, 'uid' => $id]);
+
         }
     }
 }

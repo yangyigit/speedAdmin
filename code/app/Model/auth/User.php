@@ -72,7 +72,8 @@ class User extends Model
 
         $resRole = Db::table('auth_group')
             -> orderBy('id', 'asc')
-            -> get();
+            -> get()
+            -> toArray();
 
         $userRoleData = array();
 
@@ -82,7 +83,8 @@ class User extends Model
                 -> where([
                     ['uid', '=', $uid]
                 ])
-                -> get();
+                -> get()
+                -> toArray();
 
             foreach ($resUserRole as $v) {
                 $userRoleData[] = $v['group_id'];

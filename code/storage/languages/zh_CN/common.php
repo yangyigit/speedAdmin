@@ -16,6 +16,8 @@ return [
         'edit_error'=>'修改失败',
         'add_success'=>'添加成功',
         'add_error'=>'添加失败',
+        'del_success'=>'删除成功',
+        'del_error'=>'删除失败',
     ],
     'status'=>[
         'normal'=>'正常',
@@ -48,5 +50,10 @@ return [
         'rule'=>'规则',
         'submit'=>'立即提交',
         'reset'=>'重置',
+    ],
+    'user_alert'=>[
+        'user_choose_error'=>'用户选择错误',
+        'allot_error'=>'分配失败',
+        'allot_success'=>'分配成功',
     ]
 ];

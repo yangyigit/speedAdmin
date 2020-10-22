@@ -1,0 +1,42 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <table class="layui-table" style="margin-top: 20px">
+                        <tbody>
+                        <tr>
+                            <td>姓名</td>
+                            <td>{$info.fullname}</td>
+                        </tr>
+                        <tr>
+                            <td>用户名</td>
+                            <td>{$info.username}</td>
+                        </tr>
+                        <tr>
+                            <td>状态</td>
+                            <td>{$info.status}</td>
+                        </tr>
+                        <tr>
+                            <td>管理员</td>
+                            <td>{$info.is_admin}</td>
+                        </tr>
+                        <tr>
+                            <td>添加时间</td>
+                            <td>{$info.create_time|date='Y-m-d H:i'}</td>
+                        </tr>
+                        <tr>
+                            <td>修改时间</td>
+                            <td>{$info.update_time|date='Y-m-d H:i'}</td>
+                        </tr>
+                        <tr>
+                            <td>最后登录时间</td>
+                            <td>{$info.last_login_time|date='Y-m-d H:i'}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
