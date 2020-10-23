@@ -1,0 +1,57 @@
+<div class="layui-fluid" style="margin-bottom: 50px">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                    <col width="200">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>用户ID</th>
+                    <th>用户名</th>
+                    <th>姓名</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="info" id="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.username}</td>
+                    <td>{$vo.fullname}</td>
+                    <td>{$vo.status}</td>
+                    <td>
+                        <button type="button" class="layui-btn layui-btn-xs layui-btn-danger" onclick="del({$vo.id})">
+                            解除用户组
+                        </button>
+                    </td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    /**
+     * 解除用户组
+     * @param id
+     */
+    function del(id){
+        $.ajax({
+            'url':'removeUser?id='+id,
+            'success':function(){
+                location.reload();
+            },
+            'dataType':'json',//返回的格式
+            'type':'get',//发送的格式
+        });
+    }
+</script>

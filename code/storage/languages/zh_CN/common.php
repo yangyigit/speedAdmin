@@ -55,5 +55,9 @@ return [
         'user_choose_error'=>'用户选择错误',
         'allot_error'=>'分配失败',
         'allot_success'=>'分配成功',
-    ]
+    ],
+    'group_alert'=>[
+    'allot_error'=>'授权失败',
+    'allot_success'=>'授权成功',
+]
 ];

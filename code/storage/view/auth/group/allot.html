@@ -1,0 +1,76 @@
+<div class="layui-fluid" style="margin-bottom: 50px">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px">
+            节点前带有 ^ 为显示在左侧目录中的菜单
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px 15px 0 15px;">
+            <form class="layui-form" action="" lay-filter="component-form-group">
+                <div id="test1"></div>
+
+                <div class="layui-form-item layui-layout-admin">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <button class="layui-btn" lay-submit="" lay-filter="component-form-add">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    layui.config({
+        base: '/static/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate', 'upload', 'tree'], function () {
+        const $ = layui.$,
+            admin = layui.admin,
+            element = layui.element,
+            layer = layui.layer,
+            laydate = layui.laydate,
+            form = layui.form,
+            tree = layui.tree;
+
+        let inst1 = tree.render({
+            elem: '#test1'  //绑定元素
+            ,showCheckbox:true
+            ,id: 'rule'
+            ,data: {$info|raw}
+    });
+
+        form.on('submit(component-form-add)', function () {
+            let checkData = tree.getChecked('rule');
+
+            $.ajax({
+                'url':'allot',
+                'data':{'rule': JSON.stringify(checkData), 'id': {$id}},
+            'success':function(data){
+                if (data.code === 0) {
+                    layer.alert(data.msg,{
+                        closeBtn: 0
+                    },function (index) {
+                        location.reload();
+                        layer.close(index);
+                    });
+                } else {
+                    layer.alert(data.msg,{
+                        skin: 'layui-layer-error' //样式类名
+                        ,closeBtn: 0
+                    });
+                }
+            },
+            'dataType':'json',//返回的格式
+                'type':'post',//发送的格式
+        });
+            return false;
+        });
+    });
+</script>
