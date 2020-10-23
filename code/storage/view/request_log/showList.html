@@ -1,0 +1,79 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">请求日志管理</div>
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                    <div class="layui-form-item">
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">请求时间</label>
+                            <div class="layui-input-block">
+                                <input name="request_log#add_time#time" id="search_request_log_add_time" placeholder="" autocomplete="off" class="layui-input" type="text">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <button class="layui-btn layuiadmin-btn-useradmin" lay-submit="" lay-filter="LAY-user-front-search">
+                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="test-table-page" lay-filter="test-table-page"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.config({
+        base: '/static/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table', 'form','laydate'], function () {
+        let admin = layui.admin
+            , form = layui.form
+            ,layer = layui.layer
+            , table = layui.table
+            , laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#search_request_log_add_time'
+            ,range: true
+        });
+
+        //监听搜索
+        form.on('submit(LAY-user-front-search)', function(data){
+            let field = data.field;
+
+            //执行重载
+            table.reload('test-table-page', {
+                where: field,
+                page: {curr: 1}
+            });
+        });
+
+        table.render({
+            elem: '#test-table-page'
+            , url: 'showList'
+            , toolbar:"#toolbar"
+            , limit: 10
+            , limits: [10,20,40,80,160,500,1000,5000,10000]
+            , defaultToolbar: ['filter']
+            , cols: [[
+                {field: "id", title: "id"},
+                {field: "uid", title: "用户id"},
+                {field: "method", title: "操作方法"},
+                {field: "data", title: "请求数据"},
+                {field: "add_time", title: "请求时间"},
+
+            ]],
+            page: true
+        });
+
+
+    });
+</script>

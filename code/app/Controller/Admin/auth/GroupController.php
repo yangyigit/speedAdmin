@@ -10,6 +10,11 @@ use Hyperf\Di\Annotation\Inject;
 use Hyperf\View\RenderInterface;
 use Hyperf\DbConnection\Db;
 
+/**
+ * ##权限管理-用户组##
+ * Class Group
+ * @package app\admin\controller\auth
+ */
 class GroupController extends BaseController
 {
 
