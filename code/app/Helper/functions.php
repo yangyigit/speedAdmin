@@ -224,3 +224,44 @@ if (! function_exists('isAjax')) {
         return $request->getHeader("X-Requested-With");
     }
 }
+
+if(! function_exists('getTableFields')){
+
+    /**
+     * 解析表字段名
+     * @param $table
+     */
+    function getTableFields($table){
+
+        $sql = "SELECT COLUMN_NAME AS name FROM information_schema.COLUMNS WHERE TABLE_NAME='".$table."'";
+        $rows = \Hyperf\DbConnection\Db::select($sql,[1]);
+
+        if(!$rows){
+            $rows = [];
+        }
+
+        return $rows;
+
+    }
+}
+
+
+if(! function_exists('getTableFields')){
+
+    /**
+     * 解析表字段名
+     * @param $table
+     */
+    function getTableFields($table){
+
+        $sql = "SELECT COLUMN_NAME AS name FROM information_schema.COLUMNS WHERE TABLE_NAME='".$table."'";
+        $rows = \Hyperf\DbConnection\Db::select($sql,[1]);
+
+        if(!$rows){
+            $rows = [];
+        }
+
+        return $rows;
+
+    }
+}

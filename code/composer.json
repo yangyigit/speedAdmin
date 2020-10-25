@@ -15,7 +15,7 @@
         "php": ">=7.2",
         "ext-swoole": ">=4.5",
         "hyperf/cache": "~2.0.0",
-        "hyperf/command": "~2.0.0",
+        "hyperf/command": "^2.0",
         "hyperf/config": "~2.0.0",
         "hyperf/db-connection": "~2.0.0",
         "hyperf/framework": "~2.0.0",
