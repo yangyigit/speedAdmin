@@ -38,7 +38,7 @@ Router::addGroup('/auth',function (){
 });
 
 //请求日志
-Router::get('/admin/RequestLog/showList','App\Controller\Admin\RequestLogController@showList');
+Router::get('/RequestLog/showList','App\Controller\Admin\RequestLogController@showList');
 
 Router::get('/favicon.ico', function () {
     return '';
