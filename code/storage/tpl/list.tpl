@@ -3,7 +3,16 @@
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-header">#explain_web#</div>
-                #search#
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                    <div class="layui-form-item">
+                        #search#
+                        <div class="layui-inline">
+                            <button class="layui-btn layuiadmin-btn-useradmin" lay-submit="" lay-filter="LAY-user-front-search">
+                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <div class="layui-card-body">
                     <table class="layui-hide" id="test-table-page" lay-filter="test-table-page"></table>
                     <script type="text/html" id="test-table-operate-barDemo">
@@ -48,7 +57,7 @@
 
         table.render({
             elem: '#test-table-page'
-            , url: '{:Url("showList")}'
+            , url: 'showList'
             , toolbar:"#toolbar"
             , limit: 10
             , limits: [10,20,40,80,160,500,1000,5000,10000]
@@ -69,7 +78,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: "{:Url('add')}",
+                    content: "add",
                     cancel: function(){
                         table.reload('test-table-page');
                     }
@@ -87,7 +96,7 @@
                     shadeClose: true,
                     shade: 0.8,
                     area: ['100%', '100%'],
-                    content: "{:Url('edit')}?#primary_key#=" + data.#primary_key#,
+                    content: "edit?#primary_key#=" + data.#primary_key#,
                     cancel: function(){
                         table.reload('test-table-page');
                     }

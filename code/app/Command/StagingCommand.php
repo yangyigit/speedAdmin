@@ -88,7 +88,10 @@ class StagingCommand extends HyperfCommand
         $res_db = getTableFields($table);
 
         //创建控制器代码
-        $this->staging->createController();
+        //$this->staging->createController($class, $table, $explain_class, $author, $res_db);
+
+        //创建网页列表代码
+        $this->staging->createListView($class, $search, $res_db, $explain_class, $table);
 
         $this->output->writeln('create success');
     }

@@ -90,38 +90,87 @@ class Staging{
     /**
      * 创建控制器代码
      */
-    public function createController($class, $table, $explain_class, $author, $res_db, $remarks)
+    public function createController($class, $table, $explain_class, $author, $res_db)
     {
-        $fileName = $class.'.php';
+        $fileName = $class.'Controller.'.'php';
         $dir = BASE_PATH.'/app/Controller/Admin';
         $content_dir = BASE_PATH.'/storage/tpl/controller.tpl';
 
         $content = file_get_contents($content_dir);
 
-        $fields = '';
-        $fields_name = '';
-
-        foreach ($res_db as $v) {
-            $fields .= '    "'.$v.'" => "require",
-            ';
-        }
-
-        foreach ($remarks as $k => $v){
-            $fields_name .= '    "'.$k.'" => "'.$v['comment'].'必须",
-            ';
-        }
-
         $content = str_replace('#class#', $class, $content);
         $content = str_replace('#explain_class#', $explain_class, $content);
         $content = str_replace('#author#', $author, $content);
         $content = str_replace('#table#', $table, $content);
-        $content = str_replace('#fields#', $fields, $content);
-        $content = str_replace('#primary_key#', $res_db[0], $content);
-        $content = str_replace('#fields_name#', $fields_name, $content);
+        $content = str_replace('#primary_key#', $res_db[0]['name'], $content);
+        $content = str_replace('#request#', $class.'Request', $content);
+        $content = str_replace('#url_name#', strtolower($class), $content);
+
 
         //创建文件夹
         if (!file_exists($dir)) {
             mkdir($dir, 0755, true);
+        }
+
+        //写入文件
+        file_put_contents($dir.'/'.$fileName, $content);
+    }
+
+    /**
+     * 创建列表生成网页源码
+     */
+    public function createListView($class, $search, $res_db, $explain_class, $table)
+    {
+        $fileName = 'showList.html';
+        $dir_name = trim(strtolower(preg_replace('/(?<=[a-z])([A-Z])/', '_$1', $class)), '_');
+        $dir = BASE_PATH.'/storage/view/'.$dir_name;
+        $content_dir = BASE_PATH.'/storage/tpl/list.tpl';
+
+        $content = file_get_contents($content_dir);
+
+        $search_content = '';
+        //解析搜索条件
+        if ('' !== $search) {
+
+            foreach ($res_db as $v) {
+                $search_content .= <<<eof
+                        <div class="layui-inline">
+                            <label class="layui-form-label">{$v['remark']}</label>
+                            <div class="layui-input-inline">
+                                <input name="search_{$table}#{$v['name']}" autocomplete="off" class="layui-input" type="text">
+                                <input type="hidden" name="type_{$table}#{$v['name']}" value="like">
+                            </div>
+                        </div>
+
+
+eof;
+            }
+
+        }
+
+        $fields = '';
+        foreach ($res_db as $v) {
+            $fields .= <<<eof
+                {field: '{$v['name']}', width: 200, title: '{$v['remark']}'},
+
+eof;
+        }
+
+        $content = str_replace('#explain_web#', $explain_class, $content);
+        $content = str_replace('#fields#', $fields, $content);
+        $content = str_replace('#search#', $search_content, $content);
+        $content = str_replace('#primary_key#', $res_db[0]['name'], $content);
+
+
+        //创建文件夹
+        if (!file_exists($dir)) {
+            mkdir($dir, 0755, true);
+        } else {
+            fwrite(STDOUT, iconv('UTF-8', 'GB2312', '网页文件夹已经存在，是否覆盖文件,y/n: '));
+            if ('y' != trim(fgets(STDIN))) {
+                echo iconv('UTF-8', 'GB2312', '执行结束');
+                die;
+            }
         }
 
         //写入文件

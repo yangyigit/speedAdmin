@@ -225,26 +225,6 @@ if (! function_exists('isAjax')) {
     }
 }
 
-if(! function_exists('getTableFields')){
-
-    /**
-     * 解析表字段名
-     * @param $table
-     */
-    function getTableFields($table){
-
-        $sql = "SELECT COLUMN_NAME AS name FROM information_schema.COLUMNS WHERE TABLE_NAME='".$table."'";
-        $rows = \Hyperf\DbConnection\Db::select($sql,[1]);
-
-        if(!$rows){
-            $rows = [];
-        }
-
-        return $rows;
-
-    }
-}
-
 
 if(! function_exists('getTableFields')){
 
@@ -254,8 +234,8 @@ if(! function_exists('getTableFields')){
      */
     function getTableFields($table){
 
-        $sql = "SELECT COLUMN_NAME AS name FROM information_schema.COLUMNS WHERE TABLE_NAME='".$table."'";
-        $rows = \Hyperf\DbConnection\Db::select($sql,[1]);
+        $sql = "SELECT COLUMN_NAME AS name, if( COLUMN_COMMENT is null or COLUMN_COMMENT='', COLUMN_NAME, COLUMN_COMMENT) AS remark FROM information_schema.COLUMNS WHERE TABLE_NAME = ?";
+        $rows = \Hyperf\DbConnection\Db::select($sql,[$table]);
 
         if(!$rows){
             $rows = [];

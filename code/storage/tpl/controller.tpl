@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace app\admin\controller;
+namespace App\Controller\Admin;
 
 use App\Controller\BaseController;
 use App\Request\#request#;
@@ -14,7 +14,7 @@ use Hyperf\View\RenderInterface;
  * author: #author#
  * Class #class#.
  */
-class #class# extends BaseController
+class #class#Controller extends BaseController
 {
 
     /**
@@ -48,7 +48,7 @@ class #class# extends BaseController
             $data['count'] = $count;
             $data['data'] = $res;
 
-            return json($data, 200);
+            return $this->response->json($data);
         } else {
             //需要显示的按钮
             $btn = [
@@ -78,7 +78,7 @@ class #class# extends BaseController
             //判断显示按钮是否有权限
             $data['btn'] = btnShow($btn, $this->session);
 
-            return $render->render('auth/#view_name#/showList',$data);
+            return $render->render('#url_name#/showList',$data);
         }
     }
 
@@ -101,7 +101,7 @@ class #class# extends BaseController
                 return $this->response->json(['code' => 1, 'msg' => trans('common.alert.add_error')]);
             }
         } else {
-                return $render->render('auth/#view_name#/add');
+                return $render->render('#url_name#/add');
         }
     }
 
@@ -115,7 +115,7 @@ class #class# extends BaseController
             $validated  = $this->verifyRequest->validated();
             $data = array_merge($data,$validated);
 
-            $res = Db::name('#table#')
+            $res = Db::table('#table#')
                 ->where('#primary_key#', $data['#primary_key#'])
                 ->update($data);
 
@@ -127,11 +127,11 @@ class #class# extends BaseController
         } else {
             $#primary_key# = $this->request->input('#primary_key#');
 
-            $res = Db::name('#table#')
+            $res = Db::table('#table#')
                 ->where('#primary_key#', $#primary_key#)
                 ->first();
 
-                return $render->render('auth/#view_name#/edit', ['info' => $res]);
+                return $render->render('#url_name#/edit', ['info' => $res]);
         }
     }
 
@@ -142,7 +142,7 @@ class #class# extends BaseController
     {
         $#primary_key# = $this->request->input('#primary_key#');
 
-        $res = Db::name('#table#')
+        $res = Db::table('#table#')
             ->where('#primary_key#', $#primary_key#)
             ->delete();
 

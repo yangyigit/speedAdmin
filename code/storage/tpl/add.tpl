@@ -45,8 +45,8 @@
         /* 监听提交 */
         form.on('submit(component-form-demo1)', function (data) {
             $.ajax({
-                'url':'{:Url("add")}',
-                'data':JSON.stringify(data.field),
+                'url':'add',
+                'data':data.field,
                 'success':function(data){
                     if (data.code === 0) {
                         layer.alert(data.msg,{
