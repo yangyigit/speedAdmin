@@ -8,11 +8,13 @@ use App\Request\#request#;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\View\RenderInterface;
+use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
  * ###explain_class###
  * author: #author#
  * Class #class#.
+ * @AutoController()
  */
 class #class#Controller extends BaseController
 {
