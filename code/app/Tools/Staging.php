@@ -127,24 +127,27 @@ class Staging{
      */
     public function createListView($class, $search, $res_db, $explain_class, $table)
     {
+        $new_field = [];
         $fileName = 'showList.html';
         $dir_name = trim(strtolower(preg_replace('/(?<=[a-z])([A-Z])/', '_$1', $class)), '_');
         $dir = BASE_PATH.'/storage/view/'.$dir_name;
         $content_dir = BASE_PATH.'/storage/tpl/list.tpl';
 
         $content = file_get_contents($content_dir);
-
+        foreach ($res_db as $k=>$v) {
+            $new_field[$v['name']] = $v['remark'];
+        }
         $search_content = '';
         //解析搜索条件
-        if ('' !== $search) {
+        if ('' !== $new_field) {
 
-            foreach ($res_db as $v) {
+            foreach ($search as $v) {
                 $search_content .= <<<eof
                         <div class="layui-inline">
-                            <label class="layui-form-label">{$v['remark']}</label>
+                            <label class="layui-form-label">{$new_field[$v]}</label>
                             <div class="layui-input-inline">
-                                <input name="search_{$table}#{$v['name']}" autocomplete="off" class="layui-input" type="text">
-                                <input type="hidden" name="type_{$table}#{$v['name']}" value="like">
+                                <input name="search_{$table}#{$v}" autocomplete="off" class="layui-input" type="text">
+                                <input type="hidden" name="type_{$table}#{$v}" value="like">
                             </div>
                         </div>
 

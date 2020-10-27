@@ -88,32 +88,32 @@ class StagingCommand extends HyperfCommand
         //解析表字段
         $res_db = getTableFields($table);
 
-        //创建控制器代码
-        if($this->staging->createController($class, $table, $explain_class, $author, $res_db)){
-            $count++;
-        }
+//        //创建控制器代码
+//        if($this->staging->createController($class, $table, $explain_class, $author, $res_db)){
+//            $count++;
+//        }
 
         //创建网页列表代码
         if($this->staging->createListView($class, $search, $res_db, $explain_class, $table)){
             $count++;
         }
+//
+//        //创建网页新增代码
+//        if($this->staging->createAddView($class, $res_db, $explain_class)){
+//            $count++;
+//        }
+//
+//        //创建网页编辑代码
+//        if($this->staging->createEditView($class, $res_db, $explain_class)){
+//            $count++;
+//        }
 
-        //创建网页新增代码
-        if($this->staging->createAddView($class, $res_db, $explain_class)){
-            $count++;
-        }
-
-        //创建网页编辑代码
-        if($this->staging->createEditView($class, $res_db, $explain_class)){
-            $count++;
-        }
-
-        $this->output->progressStart($count);
-        for($i = 1; $i<=$count; $i++){
-            $this->output->progressAdvance(1);
-        }
-        $this->output->progressFinish();
-        $this->output->writeln('create success');
+//        $this->output->progressStart($count);
+//        for($i = 1; $i<=$count; $i++){
+//            $this->output->progressAdvance(1);
+//        }
+//        $this->output->progressFinish();
+//        $this->output->writeln('create success');
     }
 
 
