@@ -108,9 +108,12 @@ class StagingCommand extends HyperfCommand
             $count++;
         }
 
-
-var_dump($count);
-        //$this->output->writeln('create success');
+        $this->output->progressStart($count);
+        for($i = 1; $i<=$count; $i++){
+            $this->output->progressAdvance(1);
+        }
+        $this->output->progressFinish();
+        $this->output->writeln('create success');
     }
 
 
