@@ -50,6 +50,7 @@ class StagingCommand extends HyperfCommand
 
     public function handle()
     {
+        $count = 0;
         if ($this->input->hasOption('class')) {
             $class = $this->input->getOption('class');
         } else {
@@ -88,12 +89,29 @@ class StagingCommand extends HyperfCommand
         $res_db = getTableFields($table);
 
         //创建控制器代码
-        //$this->staging->createController($class, $table, $explain_class, $author, $res_db);
+        if($this->staging->createController($class, $table, $explain_class, $author, $res_db)){
+            $count++;
+        }
 
         //创建网页列表代码
-        $this->staging->createListView($class, $search, $res_db, $explain_class, $table);
+        if($this->staging->createListView($class, $search, $res_db, $explain_class, $table)){
+            $count++;
+        }
 
-        $this->output->writeln('create success');
+        //创建网页新增代码
+        if($this->staging->createAddView($class, $res_db, $explain_class)){
+            $count++;
+        }
+
+        //创建网页编辑代码
+        if($this->staging->createEditView($class, $res_db, $explain_class)){
+            $count++;
+        }
+
+
+var_dump($count);
+        //$this->output->writeln('create success');
     }
+
 
 }

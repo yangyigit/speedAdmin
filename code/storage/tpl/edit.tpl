@@ -17,7 +17,7 @@
                 <div class="layui-form-item layui-layout-admin">
                     <div class="layui-input-block">
                         <div class="layui-footer" style="left: 0;">
-                            <input type="hidden" name="#primary_key#" value="{:input('get.#primary_key#')}">
+                            <input type="hidden" name="#primary_key#" value="{$info.#primary_key#}">
                             <button class="layui-btn" lay-submit="" lay-filter="component-form-demo1">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
@@ -46,8 +46,8 @@
         /* 监听提交 */
         form.on('submit(component-form-demo1)', function (data) {
             $.ajax({
-                'url':'{:Url("edit")}',
-                'data':JSON.stringify(data.field),
+                'url':'edit',
+                'data':data.field,
                 'success':function(data){
                     if (data.code === 0) {
                         layer.alert(data.msg,{

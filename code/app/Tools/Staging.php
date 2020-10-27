@@ -113,7 +113,13 @@ class Staging{
         }
 
         //写入文件
-        file_put_contents($dir.'/'.$fileName, $content);
+        $res = file_put_contents($dir.'/'.$fileName, $content);
+
+        if($res){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -174,7 +180,108 @@ eof;
         }
 
         //写入文件
-        file_put_contents($dir.'/'.$fileName, $content);
+        $res = file_put_contents($dir.'/'.$fileName, $content);
+
+        if($res){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    /**
+     * 创建新增生成网页源码
+     */
+    public function createAddView($class, $res_db, $explain_web)
+    {
+        $fileName = 'add.html';
+        $dir_name = trim(strtolower(preg_replace('/(?<=[a-z])([A-Z])/', '_$1', $class)), '_');
+        $dir = BASE_PATH.'/storage/view/'.$dir_name;
+        $content_dir = BASE_PATH.'/storage/tpl/add.tpl';
+
+        $content = file_get_contents($content_dir);
+
+        $fields = '';
+        foreach ($res_db as $v) {
+            $fields .= <<<eof
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><i class="layui-badge-dot layui-bg-orange"></i> {$v['remark']}</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="{$v['name']}" lay-verify="required" autocomplete="off" placeholder=""
+                                   value="" class="layui-input">
+                        </div>
+                    </div>
+
+
+eof;
+        }
+
+        $content = str_replace('#explain_web#', $explain_web, $content);
+        $content = str_replace('#fields#', $fields, $content);
+
+        //创建文件夹
+        if (!file_exists($dir)) {
+            mkdir($dir, 0755, true);
+        }
+
+        //写入文件
+        $res = file_put_contents($dir.'/'.$fileName, $content);
+
+        if($res){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    /**
+     * 创建编辑网页源码
+     */
+    public function createEditView($class, $res_db, $explain_web)
+    {
+        $fileName = 'edit.html';
+        $dir_name = trim(strtolower(preg_replace('/(?<=[a-z])([A-Z])/', '_$1', $class)), '_');
+        $dir = BASE_PATH.'/storage/view/'.$dir_name;
+        $content_dir = BASE_PATH.'/storage/tpl/edit.tpl';
+
+        $content = file_get_contents($content_dir);
+
+        $fields = '';
+        foreach ($res_db as $k => $v) {
+            if ($k == 0){
+                continue;
+            }
+
+            $fields .=<<<eof
+            <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-badge-dot layui-bg-orange"></i> {$v['remark']}</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="{$v['name']}" autocomplete="off" placeholder=""
+                              value="{\$info.{$v['name']}}" class="layui-input" lay-verify="required">
+                    </div>
+                </div>
+eof;
+        }
+
+        $content = str_replace('#explain_web#', $explain_web, $content);
+        $content = str_replace('#fields#', $fields, $content);
+        $content = str_replace('#primary_key#', $res_db[0]['name'], $content);
+
+        //创建文件夹
+        if (!file_exists($dir)) {
+            mkdir($dir, 0755, true);
+        }
+
+        //写入文件
+        $res = file_put_contents($dir.'/'.$fileName, $content);
+
+        if($res){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }
