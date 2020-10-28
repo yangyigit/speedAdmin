@@ -48,6 +48,7 @@ git clone https://gitee.com/yangyigit/speedAdmin.git
 
 # 进入安装好的 Hyperf 项目目录
 cd 容器目录
+composer install
 
 # 启动 Hyperf
 php bin/hyperf.php start
