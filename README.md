@@ -2,67 +2,79 @@
 speedAdmin-基于hyperf的后台快速构建系统
 
 ## 介绍
-speedAdmin是一款快速构建后台的轻量级工具
+speedAdmin是一款快速构建后台的轻量级系统，有别于传统的前后端分离的框架，对于后端开发人员更加友好，大大降低学习成本。在使用上和传统的Thinkphp、Laravel框架无异。但是有别于传统FPM环境，性能上是成倍的提升。
 
 ## 环境要求
 - PHP >= 7.2
-- Swoole PHP 扩展 >= 4.5
+- Swoole PHP 扩展 >= 4.4，并关闭了 Short Name
+- OpenSSL PHP 扩展
+- JSON PHP 扩展
+- PDO PHP 扩展 （如需要使用到 MySQL 客户端）
+- Redis PHP 扩展 （如需要使用到 Redis 客户端）
 - mysql>5.6
 - redis
+
+## 特色
+- 脚手架一键生成CRUD
+- 自动化的权限节点管理
+- 基于Swoole常驻内存运行模式，运行速度快
+- 支持灵活的业务对接权限
 
 ## 具备的模块
 - 用户模块：登录，忘记密码，编辑资料，修改密码
 - 基于auth的权限模块，预留了业务对接模块
 - 基于权限的目录渲染和按钮显示
 - 操作日志模块
-- 后台登录页令牌授权模块（非法用户找不到地址）
+
+## 安装
+- 推荐Docker下运行
+```
+# 下载并运行 hyperf/hyperf 镜像
+docker pull hyperf/hyperf
+
+# 将镜像内的项目目录绑定到宿主机的目录
+docker run -v 主机目录:容器目录 -p 9501:9501 -it --entrypoint /bin/sh hyperf/hyperf:latest
+
+# 镜像容器运行后，在容器内安装 Composer
+wget https://github.com/composer/composer/releases/download/1.8.6/composer.phar
+chmod u+x composer.phar
+mv composer.phar /usr/local/bin/composer
+
+# 将 Composer 镜像设置为阿里云镜像，加速国内下载速度
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer
+
+# 通过git克隆项目到主机目录中
+git clone https://gitee.com/yangyigit/speedAdmin.git
+
+# 进入安装好的 Hyperf 项目目录
+cd 容器目录
+
+# 启动 Hyperf
+php bin/hyperf.php start
+```
+- 导入database目录下的数据库文件
 
 
-## 好用在哪
-### 1. 一行命令完成一个表管理
+## Nginx配置代理
+```
+# 配置静态资源存放路径
+location /static {
+     root \www\wwwroot\code\public;
+}
 
-php think Staging 
---class Order 
---table order 
---explain_class 订单管理 
---author liuyexing
+location / {
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
-自动完成增、删、改、查的业务，自动完成视图层和控制器层代码的编写
-
-
-### 2. 自动化的权限节点管理
-
-规则管理中，点击按钮自动同步权限节点
-
-### 3. 前端强大
-
-前后端半分离，页面无刷新，屏幕自动响应，自动适配PC、平板、手机
-
-### 4. 无缝切换运行模式
-传统php-fpm和swoole无缝切换
-
-php-fpm：传统方式，请求完成内存释放，线上随时启动，没有内存泄漏
-
-swoole：守护进程类似 java，自动启动数据库连接池，性能10倍提升
-
-### 5. 支持灵活的业务对接权限
-
-规则表中增加判断字段和判断规则，会自动去用户表中去查看对应的字段值，完成权限判断
-
-例如：规则表中规则字段，{score}>5  and {score}<100  
-表示用户表中的 score 字段在5-100之间时这条规则才会通过。
-
-
-
-## 安装教程
-
-代码文件在server文件夹
-
-数据库文件在sql文件夹
+    # 执行代理访问真实服务器
+     proxy_pass http://127.0.0.1:9501;
+}
+```
 
 ## 使用说明
 
-1.  [后台代码生成器](./books/AUTOCODE.md)
+1.  [后台代码生成器](./books/STAGINGCODE.md)
 2.  [按钮权限设置](./books/BTNAUTHSHOW.md)
 3.  [后台搜索设置](./books/SEARCH.md)
-php bin/hyperf.php custom:staging -C Admin -T admin -S id -E 11 -A yang
+4.  [自动化权限节点配置](./books/AUTOAUTH.md)
